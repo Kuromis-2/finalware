@@ -1,0 +1,19 @@
+{
+  "name": "finalware",
+  "version": "1.0.0",
+  "description": "tool to flash starlight-12",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass src/:app/ && electron ."
+  },
+  "author": "kuromis-2",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.2.0"
+  },
+  "dependencies": {
+    "pc-nrf-dfu-js": "^0.2.12",
+    "serialport": "^10.4.0"
+  }
+}
