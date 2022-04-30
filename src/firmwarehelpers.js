@@ -6,18 +6,23 @@ const { getComPorts, getNewlyPluggedInPorts, updateMouse } = require('./firmware
 // Saving both lists to beforePorts and afterPorts
 const os = require('os');
 const storage = require('electron-json-storage');
+const { Console } = require('console');
 
 storage.setDataPath(os.tmpdir());
 
-function saveComPorts(key){
+async function saveComPorts(key){
   const dataPath = storage.getDataPath();
   console.log(dataPath);
-  const comPorts = getComPorts();
+  const comPorts = await getComPorts();
   //store comports to locals storage with electron-json-storage
+  console.log(comPorts);
   storage.set(key, comPorts, function(error) {
-    if (error) throw error;
+    if (error) console.log("urmom");
   });
-  console.log(`Saved ${comPorts} to ${dataPath} under key ${key}`);
+  //for loop that prints out every object in comports
+  for (let i = 0; i < comPorts.length; i++) {
+    console.log(comPorts.path[i] + i);
+  }
 }
 
 function updateMouseHelper(){
@@ -47,13 +52,16 @@ function updateMouseHelper(){
   }
 
   // If there is only one plugged in port, update the mouse
+
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
     const firmwareVersion = localStorage.getItem('firmwareVersion');
-    updateMouse(port, firmwareVersion); 
+    console.log("started update process");
+    let success = updateMouse(port, firmwareVersion);
+    console.log("finished update process");
   }
-
-  console.log('Updated mouse');
+  Console.log(success ? "success" : "failure");
+  return success;
 }
 
 

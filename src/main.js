@@ -43,12 +43,12 @@ app.whenReady().then(() => {
     updateMouseHelper();
   })
   ipcMain.on('save-in-localstorage', (event, firmware) => {
-    console.log("main.js");
+    console.log("savebefore");
     //save firmware to local storage with electron-json-storage
     storage.set('firmwareVersion', firmware, function(error) {
       if (error) throw error;
     });
-
+    console.log("FirmwareVersion"+ firmware);
     console.log(`Saved ${firmware} to ${dataPath} under key ${key}`);
   })
 

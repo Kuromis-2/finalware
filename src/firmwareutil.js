@@ -12,7 +12,6 @@ async function getComPorts() {
     console.log("Retrieving all Serial Ports...");
     let ports = [];
     let portList = await SerialPort.list();
-
     for (const port of portList) {
         ports.push(port);
         console.log(`Port: ${port.path}`);
@@ -59,9 +58,10 @@ async function updateMouse(
 
     try {
         await dfuOperation.start(true);
-        console.log("Success!");
+        return true;
     } catch (e) {
         console.log(e);
+        return false;
     }
 }
 
