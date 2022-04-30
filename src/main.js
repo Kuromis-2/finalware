@@ -42,10 +42,17 @@ app.whenReady().then(() => {
     console.log("main.js");
     updateMouseHelper();
   })
-  ipcMain.on('update-mouse', (event, key) => {
+  ipcMain.on('save-in-localstorage', (event, firmware) => {
     console.log("main.js");
-    updateMouseHelper();
+    //save firmware to local storage with electron-json-storage
+    storage.set('firmwareVersion', firmware, function(error) {
+      if (error) throw error;
+    });
+
+    console.log(`Saved ${firmware} to ${dataPath} under key ${key}`);
   })
+
+  //console.log("Saved firmware version: " + version);
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.

@@ -17,7 +17,7 @@ selector.addEventListener("change", function () {
 saveFirmwareVersion(selector.value);
 
 function saveFirmwareVersion(version) {
-    let value = selector.value;
-    window.localStorage.save(value);
-    
+    let firmware = selector.value;
+    window.localStorage.save(firmware);
+    console.log("Saved firmware version: " + version + "render.js");
 }

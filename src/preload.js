@@ -9,5 +9,5 @@ contextBridge.exposeInMainWorld('firmware', {
     updateMouse: () => ipcRenderer.send('update-mouse', key)
 })
 contextBridge.exposeInMainWorld('localStorage', {
-    save: (version) => ipcRenderer.send('save-in-localstorage', version)
+    save: (firmware) => ipcRenderer.send('save-in-localstorage', firmware)
 })
