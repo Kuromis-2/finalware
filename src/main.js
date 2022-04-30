@@ -14,7 +14,6 @@ function createWindow () {
     },
       enableRemoteModule: true,
       nodeIntegration: true,
-      contextIsolation: false,
       autoHideMenuBar: true
   })
   //mainWindow.resizable = false;
@@ -38,6 +37,7 @@ app.whenReady().then(() => {
     console.log("main.js");
     saveComPorts(key);
   })
+  
   ipcMain.on('update-mouse', (event, key) => {
     console.log("main.js");
     updateMouseHelper();
@@ -50,6 +50,12 @@ app.whenReady().then(() => {
     });
     console.log("FirmwareVersion"+ firmware);
     console.log(`Saved ${firmware} to ${dataPath} under key ${key}`);
+  })
+  ipcMain.on('get-from-localstorage', (event, key) => {
+    //get value that is saved in key from local storage with electron-json-storage
+    const beforePorts = storage.get(key, function(error) {
+      if (error) throw error;
+    });
   })
 
   //console.log("Saved firmware version: " + version);

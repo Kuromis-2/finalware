@@ -18,6 +18,6 @@ saveFirmwareVersion(selector.value);
 
 function saveFirmwareVersion(version) {
     let firmware = selector.value;
-    window.localStorage.save(firmware);
+    window.storage.store(firmware);
     console.log("Saved firmware version: " + version + "render.js");
 }

@@ -20,9 +20,6 @@ async function saveComPorts(key){
     if (error) console.log("urmom");
   });
   //for loop that prints out every object in comports
-  for (let i = 0; i < comPorts.length; i++) {
-    console.log(comPorts.path[i] + i);
-  }
 }
 
 function updateMouseHelper(){
