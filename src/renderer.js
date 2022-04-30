@@ -4,5 +4,6 @@ function closeapp() {
 }
 
 function getports(){
-    window.firmware.getports('beforePorts');
+    console.log("renderer.js");
+    window.electronAPI.getports('beforePorts');
 }

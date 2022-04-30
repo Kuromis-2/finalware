@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "electron-json-storage": "^4.5.0",
+    "node-gyp": "^9.0.0",
     "pc-nrf-dfu-js": "^0.2.12",
-    "serialport": "^10.4.0"
+    "sass": "^1.51.0",
+    "serialport": "8.0.7"
   }
 }

@@ -64,3 +64,8 @@ async function updateMouse(
         console.log(e);
     }
 }
+
+
+module.exports.getComPorts = getComPorts;
+module.exports.getNewlyPluggedInPorts = getNewlyPluggedInPorts;
+module.exports.updateMouse = updateMouse;
