@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const ipcMain = require('electron').ipcMain;
 const {saveComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
+const storage = require('electron-json-storage');
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -33,9 +34,17 @@ app.whenReady().then(() => {
   ipcMain.on('set-title', (event, title) => {
     app.quit();
   })
-  ipcMain.on('get-ports', (event, key) => {
+  ipcMain.on('save-ports', (event, key) => {
     console.log("main.js");
     saveComPorts(key);
+  })
+  ipcMain.on('update-mouse', (event, key) => {
+    console.log("main.js");
+    updateMouseHelper();
+  })
+  ipcMain.on('update-mouse', (event, key) => {
+    console.log("main.js");
+    updateMouseHelper();
   })
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

@@ -22,10 +22,12 @@ function saveComPorts(key){
 
 function updateMouseHelper(){
   console.log('Updating mouse');
-
-  // Get before and after port list from local storage unjsonify
-  const beforePorts = JSON.parse(localStorage.getItem('beforePorts'));
-  const afterPorts = JSON.parse(localStorage.getItem('afterPorts'));
+  const beforePorts = storage.get('beforePorts', function(error) {
+    if (error) throw error;
+  });
+  const afterPorts = storage.get('afterPorts', function(error) {
+    if (error) throw error;
+  });
 
   // Get the ports that were plugged in
   const pluggedInPorts = getNewlyPluggedInPorts(beforePorts, afterPorts);

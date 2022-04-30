@@ -4,8 +4,8 @@ const { DfuUpdates, DfuTransportUsbSerial, DfuOperation } = require('pc-nrf-dfu-
 
 let firmwarePaths = {
     "1.2.0":
-        "../dfu/resources/firmwares/fm6_dfu_package_1.2.0_iamadumbass_debounce.zip",
-    "1.2.5": "../dfu/resources/firmwares/fm6_dfu_package_1.2.5.zip",
+        "../resources/firmwares/fm6_dfu_package_1.2.0_iamadumbass_debounce.zip",
+    "1.2.5": "../resources/firmwares/fm6_dfu_package_1.2.5.zip",
 };
 
 async function getComPorts() {

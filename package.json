@@ -10,13 +10,18 @@
   "author": "kuromis-2",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^18.2.0"
+    "electron": "^18.2.0",
+    "electron-rebuild": "^3.2.7"
   },
   "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "cache": "^2.3.1",
+    "clear": "^0.1.0",
     "electron-json-storage": "^4.5.0",
     "node-gyp": "^9.0.0",
+    "npm": "^8.8.0",
     "pc-nrf-dfu-js": "^0.2.12",
     "sass": "^1.51.0",
-    "serialport": "8.0.7"
+    "serialport": "^8.0.7"
   }
 }
