@@ -1,16 +1,21 @@
-import { getComPorts, getNewlyPluggedInPorts, updateMouse } from './firmwareutil.js';
-
-
-
-
-
+const { getComPorts, getNewlyPluggedInPorts, updateMouse } = require('./firmwareutil.js');
 // Function that takes in a key and saves the com ports as json to local storage
 // Called by onload to save the ports before and after plugging in the mouse
 // Saving both lists to beforePorts and afterPorts
+const os = require('os');
+const storage = require('electron-json-storage');
+
+storage.setDataPath(os.tmpdir());
+
 
 function saveComPorts(key){
+  const dataPath = storage.getDataPath();
+  console.log(dataPath);
   const comPorts = getComPorts();
-  localStorage.setItem(key, JSON.stringify(comPorts));
+  //store comports to locals storage with electron-json-storage
+  storage.set(key, comPorts, function(error) {
+    if (error) throw error;
+  });
   console.log(`Saved ${comPorts} to local storage under key ${key}`);
 }
 

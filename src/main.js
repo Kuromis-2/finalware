@@ -1,7 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const ipcMain = require('electron').ipcMain;
-
+const {saveComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({

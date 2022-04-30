@@ -1,6 +1,6 @@
-import SerialPort from "serialport";
-import { DfuUpdates, DfuTransportUsbSerial, DfuOperation } from "pc-nrf-dfu-js";
-
+const SerialPort = require('serialport');
+//convert the import statement to a import statement using 
+const { DfuUpdates, DfuTransportUsbSerial, DfuOperation } = require('pc-nrf-dfu-js');
 
 let firmwarePaths = {
     "1.2.0":
@@ -8,7 +8,7 @@ let firmwarePaths = {
     "1.2.5": "../dfu/resources/firmwares/fm6_dfu_package_1.2.5.zip",
 };
 
-export async function getComPorts() {
+async function getComPorts() {
     console.log("Retrieving all Serial Ports...");
     let ports = [];
     let portList = await SerialPort.list();
@@ -22,7 +22,7 @@ export async function getComPorts() {
     return ports;
 }
 
-export function getNewlyPluggedInPorts(
+function getNewlyPluggedInPorts(
     beforePorts,
     afterPorts
 ) {
@@ -42,7 +42,7 @@ export function getNewlyPluggedInPorts(
     return newPorts;
 }
 
-export async function updateMouse(
+async function updateMouse(
     port,
     firmwareVersion
 ) {
