@@ -17,6 +17,28 @@ async function getComPorts() {
   return ports;
 }
 
+function getNewlyPluggedInPorts(
+  beforePorts,
+  afterPorts
+) {
+
+  if (beforePorts == null) throw new Error("beforePorts is null");
+  if (afterPorts == null) throw new Error("afterPorts is null");
+  if (afterPorts.length < beforePorts.length)
+      throw new Error("afterPorts.length < beforePorts.length");
+  if (afterPorts.length === 0) throw new Error("afterPorts.length === 0");
+
+  // Save only newly plugged in ports and use JSON.stringyfy to compare
+  const newPorts = [];
+  for (const port of afterPorts) {
+      if (beforePorts.find(p => p.path === port.path) == null) {
+          newPorts.push(port);
+      }
+  }
+
+  return newPorts;
+}
+
 async function updateMouseHelper(pluggedInPorts, firmwareVersion){
   console.log('Updating mouse');
 
@@ -43,7 +65,7 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion){
     console.log(`Started update process with firmware version: ${firmwareVersion}`);
     let success = updateMouse(port, firmwareVersion);
     console.log("Finished update process");
-    Console.log(success ? "Success" : "Failure");
+    console.log(success ? "Success" : "Failure");
     return success;
   }
   
@@ -52,5 +74,6 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion){
 // export getComPorts, updateMouseHelper
 module.exports = {
   getComPorts,
+  getNewlyPluggedInPorts,
   updateMouseHelper
 }

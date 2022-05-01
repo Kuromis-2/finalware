@@ -1,8 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const ipcMain = require('electron').ipcMain;
-const { getComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
-const { getNewlyPluggedInPorts } = require('./firmwareutil.js');
+const { getComPorts, getNewlyPluggedInPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
 console.log("main.js loaded");
 function createWindow () {
   console.log("createWindow got executed")
@@ -49,16 +48,16 @@ app.whenReady().then(() => {
     app.quit();
   })
 
-  ipcMain.handle('get-ports', async (event, beforePorts, afterPorts) => { 
+  ipcMain.handle('get-ports', async (event) => { 
     return await getComPorts(); 
   })
 
-  ipcMain.handle('get-new-ports', (event, beforePorts, afterPorts) => {
-    return getNewlyPluggedInPorts(beforePorts, afterPorts);
+  ipcMain.handle('get-new-ports', async (event, beforePorts, afterPorts) => {
+    return await getNewlyPluggedInPorts(JSON.parse(beforePorts), JSON.parse(afterPorts));
   })
 
   ipcMain.handle('update-mouse', async (event, pluggedInPorts, firmwareVersion) => {
-    return await updateMouseHelper(pluggedInPorts, firmwareVersion);
+    return await updateMouseHelper(JSON.parse(pluggedInPorts), firmwareVersion);
   })
 
   app.on('activate', function () {

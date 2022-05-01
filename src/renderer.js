@@ -7,16 +7,16 @@ async function savePortsBrowser(key){
     localStorage.setItem(key, JSON.stringify(await window.firmware.getPorts()));
 }
 
-async function loadPortsBrowser(key){
+function loadPortsBrowser(key){
     const ports = JSON.parse(localStorage.getItem(key));
     return ports;
 }
 
 async function updateMouseBrowser() {
-    const beforePorts = localStorage.getItem("beforePorts");
-    const afterPorts = localStorage.getItem("afterPorts");
+    const beforePorts = loadPortsBrowser('beforePorts');
+    const afterPorts = loadPortsBrowser('afterPorts');
 
-    const pluggedInPorts = JSON.stringify(window.firmware.getNewPorts(beforePorts, afterPorts));
+    const pluggedInPorts = await window.firmware.getNewPorts(beforePorts, afterPorts);
 
     // Get firmware version from local storage
     const firmwareVersion = localStorage.getItem("firmwareVersion");
