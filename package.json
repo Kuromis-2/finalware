@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "tool to flash starlight-12",
   "main": "src/main.js",
-  "scripts": {
+  "scripts": { 
     "start": "sass src/:app/ && electron .",
-    "win-fix": "del /s /q node_modules && del package-lock.json && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
-    "linux-fix": "rm -rf node_modules && rm package-lock.json %% pnpm i && ./node_modules/.bin/electron-rebuild"
+    "win-fix": "del /s /q node_modules && del package-lock.yaml && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
+    "linux-fix": "rm -rf node_modules && rm package-lock.yaml && pnpm i && ./node_modules/.bin/electron-rebuild"
   },
   "author": "kuromis-2",
   "license": "ISC",

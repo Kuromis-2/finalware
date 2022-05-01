@@ -11,5 +11,4 @@ function saveFirmwareVersion(version) {
     let value = firmwareSelector.value;
     // Save firmware in local storage
     localStorage.setItem("firmwareVersion", version);
-    console.log(`Saved firmware version: ${version}`);
 }

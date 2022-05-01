@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 specifiers:
   '@popperjs/core': ^2.10.2
@@ -205,7 +205,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.1
       '@types/keyv': 3.1.4
-      '@types/node': 17.0.30
+      '@types/node': 16.11.32
       '@types/responselike': 1.0.0
     dev: true
 
@@ -305,12 +305,6 @@ packages:
     dependencies:
       delegates: 1.0.0
       readable-stream: 3.6.0
-
-  /async/2.6.4:
-    resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
-    dependencies:
-      lodash: 4.17.21
-    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -684,17 +678,6 @@ packages:
   /duplexer3/0.1.4:
     resolution: {integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=}
     dev: true
-
-  /electron-json-storage/4.5.0:
-    resolution: {integrity: sha512-ML6Um4tZbJv938EbxvMJwzLA+v/wfWwEP+AXNum1zQF9RUFJ/SrRtIjGm9eFTFxURxn81r3ggdovuQikyF/m0Q==}
-    dependencies:
-      async: 2.6.4
-      lockfile: 1.0.4
-      lodash: 4.17.21
-      mkdirp: 0.5.6
-      rimraf: 2.7.1
-      write-file-atomic: 2.4.3
-    dev: false
 
   /electron-rebuild/3.2.7:
     resolution: {integrity: sha512-WvaW1EgRinDQ61khHFZfx30rkPQG5ItaOT0wrI7iJv9A3SbghriQGfZQfHZs25fWLBe6/vkv05LOqg6aDw6Wzw==}
