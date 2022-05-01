@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "description": "tool to flash starlight-12",
   "main": "src/main.js",
-  "scripts": { 
+  "scripts": {
     "start": "sass src/:app/ && electron .",
     "win-fix": "del /s /q node_modules && del package-lock.yaml && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
-    "linux-fix": "./node_modules/.bin/electron-rebuild"
+    "linux-fix": "./node_modules/.bin/electron-rebuild",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win",
+    "postinstall": "electron-builder install-app-deps"
   },
-  "author": "kuromis-2",
+  "author": "kuromis-2<ilovepoggers3@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "electron": "^18.2.0",
+    "electron-builder": "^23.0.3",
     "electron-rebuild": "^3.2.7"
   },
   "dependencies": {
@@ -22,6 +26,29 @@
     "npm": "^8.8.0",
     "pc-nrf-dfu-js": "^0.2.12",
     "sass": "^1.51.0",
-    "serialport": "^8.0.7"
+    "serialport": "^8.0.7",
+    "yarn": "^1.22.18"
+  },
+  "build": {
+    "appId": "com.kuromis-2.finalware",
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage",
+        "snap"
+      ],
+      "icon": "./app/finalmouse-logo.png",
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "./app/finalmouse-logo.png",
+      "category": "Utility"
+    }
   }
 }
+

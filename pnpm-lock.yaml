@@ -11,6 +11,7 @@ specifiers:
   pc-nrf-dfu-js: ^0.2.12
   sass: ^1.51.0
   serialport: ^8.0.7
+  yarn: ^1.22.18
 
 dependencies:
   '@popperjs/core': 2.11.5
@@ -21,6 +22,7 @@ dependencies:
   pc-nrf-dfu-js: 0.2.12_serialport@8.0.7
   sass: 1.51.0
   serialport: 8.0.7
+  yarn: 1.22.18
 
 devDependencies:
   electron: 18.2.0
@@ -2232,6 +2234,13 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.0.1
     dev: true
+
+  /yarn/1.22.18:
+    resolution: {integrity: sha512-oFffv6Jp2+BTUBItzx1Z0dpikTX+raRdqupfqzeMKnoh7WD6RuPAxcqDkMUy9vafJkrB0YaV708znpuMhEBKGQ==}
+    engines: {node: '>=4.0.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: false
 
   /yauzl/2.10.0:
     resolution: {integrity: sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=}

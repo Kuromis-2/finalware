@@ -10,7 +10,7 @@ function createWindow () {
     width: 453,
     height: 453,
     webPreferences: {
-      
+      devTools: !app.isPackaged,
       preload: `${__dirname}/preload.js`
     },
       enableRemoteModule: true,
