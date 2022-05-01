@@ -7,8 +7,8 @@ function createWindow () {
   console.log("createWindow got executed")
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 483,
+    width: 453,
+    height: 453,
     webPreferences: {
       
       preload: `${__dirname}/preload.js`
