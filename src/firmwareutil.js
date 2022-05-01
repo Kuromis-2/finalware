@@ -1,4 +1,3 @@
-const SerialPort = require('serialport');
 //convert the import statement to a import statement using 
 const { DfuUpdates, DfuTransportUsbSerial, DfuOperation } = require('pc-nrf-dfu-js');
 
@@ -7,19 +6,6 @@ let firmwarePaths = {
         "../resources/firmwares/fm6_dfu_package_1.2.0_iamadumbass_debounce.zip",
     "1.2.5": "../resources/firmwares/fm6_dfu_package_1.2.5.zip",
 };
-
-async function getComPorts() {
-    console.log("Retrieving all Serial Ports...");
-    let ports = [];
-    let portList = await SerialPort.list();
-    for (const port of portList) {
-        ports.push(port);
-        console.log(`Port: ${port.path}`);
-    }
-
-    console.log(`Found ${ports.length} ports!`);
-    return ports;
-}
 
 function getNewlyPluggedInPorts(
     beforePorts,
@@ -66,6 +52,5 @@ async function updateMouse(
 }
 
 
-module.exports.getComPorts = getComPorts;
 module.exports.getNewlyPluggedInPorts = getNewlyPluggedInPorts;
 module.exports.updateMouse = updateMouse;

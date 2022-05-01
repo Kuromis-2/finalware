@@ -2,16 +2,12 @@ const { contextBridge, ipcRenderer } = require('electron')
 console.log('preload.js')
 console.log('preload.js - before electronAPI')
 contextBridge.exposeInMainWorld('electronAPI', {
-    setTitle: (title) => ipcRenderer.send('set-title', title),
-    getport: (key) => ipcRenderer.send('get-port', key)
+    setTitle: (title) => ipcRenderer.invoke('set-title', title),
 })
 console.log('preload.js - before firmware')
 contextBridge.exposeInMainWorld('firmware', {
-    savePorts: (key) => ipcRenderer.send('save-ports', key),
-    updateMouse: () => ipcRenderer.send('update-mouse', key)
+    getPorts: (key) => ipcRenderer.invoke('get-ports', key),
+    getNewPorts: (beforePorts, afterPorts) => ipcRenderer.invoke('get-new-ports', beforePorts, afterPorts),
+    updateMouse: (pluggedInPorts, firmwareVersion) => ipcRenderer.invoke('update-mouse', JSON.parse(pluggedInPorts), firmwareVersion)
 })
 console.log('preload.js - before local')
-contextBridge.exposeInMainWorld('storage', {
-    store: (firmware) => ipcRenderer.send('save-in-localstorage', firmware),
-    get: (key) => ipcRenderer.send('get-from-localstorage', key)
-})
