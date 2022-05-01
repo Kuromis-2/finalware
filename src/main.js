@@ -24,9 +24,11 @@ function createWindow () {
 
   // TODO: Remove
   mainWindow.setAlwaysOnTop(true, 'screen');
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
-}
+  // mainWindow.webContents.openDevTools()
+  //check if current os is windows and change window size
+  if (process.platform === 'win32') {
+    mainWindow.setSize(468, 486);
+  }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
