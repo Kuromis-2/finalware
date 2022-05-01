@@ -3,29 +3,9 @@ const { DfuUpdates, DfuTransportUsbSerial, DfuOperation } = require('pc-nrf-dfu-
 
 let firmwarePaths = {
     "1.2.0":
-        "../resources/firmwares/fm6_dfu_package_1.2.0_iamadumbass_debounce.zip",
-    "1.2.5": "../resources/firmwares/fm6_dfu_package_1.2.5.zip",
+        "./resources/firmwares/fm6_dfu_package_1.2.0_iamadumbass_debounce.zip",
+    "1.2.5": "./resources/firmwares/fm6_dfu_package_1.2.5.zip",
 };
-
-function getNewlyPluggedInPorts(
-    beforePorts,
-    afterPorts
-) {
-    if (beforePorts == null) throw new Error("beforePorts is null");
-    if (afterPorts == null) throw new Error("afterPorts is null");
-    if (afterPorts.length < beforePorts.length)
-        throw new Error("afterPorts.length < beforePorts.length");
-    if (afterPorts.length === 0) throw new Error("afterPorts.length === 0");
-
-    let newPorts = [];
-    for (const port of afterPorts) {
-        if (!beforePorts.includes(port)) {
-            newPorts.push(port);
-        }
-    }
-
-    return newPorts;
-}
 
 async function updateMouse(
     port,
@@ -38,7 +18,7 @@ async function updateMouse(
 
     let serialNumber = port.serialNumber;
 
-    const dfuUpdates = await DfuUpdates.fromZipFilePath(firmwareVersion);
+    const dfuUpdates = await DfuUpdates.fromZipFilePath(firmwarePaths[firmwareVersion]);
     const serialPort = new DfuTransportUsbSerial(serialNumber, 16);
     const dfuOperation = new DfuOperation(dfuUpdates, serialPort);
 
@@ -51,6 +31,4 @@ async function updateMouse(
     }
 }
 
-
-module.exports.getNewlyPluggedInPorts = getNewlyPluggedInPorts;
 module.exports.updateMouse = updateMouse;

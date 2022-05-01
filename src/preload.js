@@ -6,6 +6,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 contextBridge.exposeInMainWorld('firmware', {
     getPorts: (key) => ipcRenderer.invoke('get-ports', key),
-    getNewPorts: (beforePorts, afterPorts) => ipcRenderer.invoke('get-new-ports', beforePorts, afterPorts),
-    updateMouse: (pluggedInPorts, firmwareVersion) => ipcRenderer.invoke('update-mouse', JSON.parse(pluggedInPorts), firmwareVersion)
+    getNewPorts: (beforePorts, afterPorts) => ipcRenderer.invoke('get-new-ports', JSON.stringify(beforePorts), JSON.stringify(afterPorts)),
+    updateMouse: (pluggedInPorts, firmwareVersion) => ipcRenderer.invoke('update-mouse', JSON.stringify(pluggedInPorts), firmwareVersion)
 })
