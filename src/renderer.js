@@ -31,3 +31,4 @@ async function updateMouseBrowser() {
 
     await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
 }
+
