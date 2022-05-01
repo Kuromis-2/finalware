@@ -6,6 +6,8 @@ const fs = require('fs')
 const FIRMWARE_PATH = "firmware.zip"
 
 async function downloadFirmware(firmwareVersion) {
+  const versions = await getVersionLookup();
+  console.log(`JSON.stringify(versions) = ${JSON.stringify(versions)}`);
   const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/firmwarelookup.json";
 
   // Request the firmware lookup
@@ -38,6 +40,23 @@ async function downloadFirmware(firmwareVersion) {
     })
   });
 }
+
+async function getVersionLookup() {
+  const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/versionlookup.json";
+
+  // Request the firmware lookup
+  https.get(firmwareLookup, response => {
+    let data = '';
+    response.on('data', chunk => {
+      data += chunk;
+    });
+    response.on('end', () => {
+      data = JSON.parse(data);
+      return data;
+    })
+  });
+}
+
 
 async function getComPorts() {
   console.log("Retrieving all Serial Ports...");

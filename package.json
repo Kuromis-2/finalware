@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "sass src/:app/ && electron .",
-    "win-fix": "del /s /q node_modules && yarn install && \"./node_modules/.bin/electron-rebuild.cmd\"",
+    "win-fix": "del /s /q node_modules && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
     "linux-fix": "./node_modules/.bin/electron-rebuild",
     "build:linux": "electron-builder --linux",
     "build:win": "electron-builder --win",
@@ -25,10 +25,8 @@
     "node-gyp": "^9.0.0",
     "npm": "^8.8.0",
     "pc-nrf-dfu-js": "^0.2.12",
-    "request": "^2.88.2",
     "sass": "^1.51.0",
-    "serialport": "^8.0.7",
-    "yarn": "^1.22.18"
+    "serialport": "^8.0.7"
   },
   "build": {
     "appId": "com.kuromis-2.finalware",

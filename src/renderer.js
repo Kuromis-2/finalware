@@ -12,6 +12,10 @@ function loadPortsBrowser(key){
     return ports;
 }
 
+function lookUpVersions() {
+    
+}
+
 async function updateMouseBrowser() {
     const beforePorts = loadPortsBrowser('beforePorts');
     const afterPorts = loadPortsBrowser('afterPorts');
