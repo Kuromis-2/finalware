@@ -16,9 +16,11 @@ function createWindow () {
       nodeIntegration: true,
       autoHideMenuBar: true
   })
+
   //mainWindow.resizable = false;
   // and load the index.html of the app.
   mainWindow.loadFile('app/index.html')
+
   // TODO: Remove
   mainWindow.setAlwaysOnTop(true, 'screen');
   // Open the DevTools.

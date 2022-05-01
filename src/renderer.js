@@ -21,3 +21,4 @@ function saveFirmwareVersion(version) {
     window.storage.store(firmware);
     console.log("Saved firmware version: " + version + "render.js");
 }
+
