@@ -28,7 +28,6 @@ function createWindow () {
   if (process.platform === 'win32') {
     mainWindow.setSize(468, 486);
   }
-
 }
 
 // This method will be called when Electron has finished
