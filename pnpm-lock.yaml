@@ -5,7 +5,6 @@ specifiers:
   cache: ^2.3.1
   clear: ^0.1.0
   electron: ^18.2.0
-  electron-json-storage: ^4.5.0
   electron-rebuild: ^3.2.7
   node-gyp: ^9.0.0
   npm: ^8.8.0
@@ -17,12 +16,11 @@ dependencies:
   '@popperjs/core': 2.11.5
   cache: 2.3.1
   clear: 0.1.0
-  electron-json-storage: 4.5.0
   node-gyp: 9.0.0
   npm: 8.8.0
-  pc-nrf-dfu-js: 0.2.12_serialport@8.0.8
+  pc-nrf-dfu-js: 0.2.12_serialport@8.0.7
   sass: 1.51.0
-  serialport: 8.0.8
+  serialport: 8.0.7
 
 devDependencies:
   electron: 18.2.0
@@ -222,21 +220,17 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 17.0.30
+      '@types/node': 16.11.32
     dev: true
 
   /@types/node/16.11.32:
     resolution: {integrity: sha512-+fnfNvG5JQdC1uGZiTx+0QVtoOHcggy6+epx65JYroPGsE1uhp+vo5kioiGKsAkor6ocwHteU2EvO7N8vtOZtA==}
     dev: true
 
-  /@types/node/17.0.30:
-    resolution: {integrity: sha512-oNBIZjIqyHYP8VCNAV9uEytXVeXG2oR0w9lgAXro20eugRQfY002qr3CUl6BAe+Yf/z3CRjPdz27Pu6WWtuSRw==}
-    dev: true
-
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 17.0.30
+      '@types/node': 16.11.32
     dev: true
 
   /abbrev/1.1.1:
@@ -1226,14 +1220,10 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /lockfile/1.0.4:
-    resolution: {integrity: sha512-cvbTwETRfsFh4nHsL1eGWapU1XFi5Ot9E85sWAwia7Y7EgB7vfqcZhTKZ+l7hCGxSPoushMv5GKhT5PdLv03WA==}
-    dependencies:
-      signal-exit: 3.0.7
-    dev: false
-
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
+    optional: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -1434,6 +1424,7 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
+    dev: true
 
   /mkdirp/1.0.4:
     resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
@@ -1726,12 +1717,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /pc-nrf-dfu-js/0.2.12_serialport@8.0.8:
+  /pc-nrf-dfu-js/0.2.12_serialport@8.0.7:
     resolution: {integrity: sha512-KINXqb83V9ZafH0KSLZIw2XUQ2YBAvfh0beFRWrN0bairBdEDyCG3ScoUUUSjGuTqdqK4BjLR0N4RBWroAaMvA==}
     peerDependencies:
       serialport: ^8.0.7
     dependencies:
-      serialport: 8.0.8
+      serialport: 8.0.7
     dev: false
 
   /pend/1.2.0:
@@ -1879,13 +1870,6 @@ packages:
     resolution: {integrity: sha1-G0KmJmoh8HQh0bC1S33BZ7AcATs=}
     engines: {node: '>= 4'}
 
-  /rimraf/2.7.1:
-    resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
-    hasBin: true
-    dependencies:
-      glob: 7.2.0
-    dev: false
-
   /rimraf/3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
@@ -1955,8 +1939,8 @@ packages:
     dev: true
     optional: true
 
-  /serialport/8.0.8:
-    resolution: {integrity: sha512-GEaMYbAk9chfGyxoVC27PHnKMUMOQOCAg+9umOhAgk88vH0H6DbQ9/Tj3lRwoj7lE+TLra75P/0l1RXMfX4yQg==}
+  /serialport/8.0.7:
+    resolution: {integrity: sha512-R9bfNebs2dblYf5sD/Aaa7j8+siP4X7TGT02lqHM9DF5fyjlrPGXmsLw9+LKOz1AvjGjkxf2NzBVnDpqRX7clQ==}
     engines: {node: '>=8.6.0'}
     requiresBuild: true
     dependencies:
@@ -2239,14 +2223,6 @@ packages:
 
   /wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
-
-  /write-file-atomic/2.4.3:
-    resolution: {integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==}
-    dependencies:
-      graceful-fs: 4.2.10
-      imurmurhash: 0.1.4
-      signal-exit: 3.0.7
-    dev: false
 
   /y18n/5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}

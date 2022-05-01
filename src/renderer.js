@@ -3,22 +3,32 @@ function closeapp() {
     window.electronAPI.setTitle("urmom");
 }
 
-function savePortsBrowser(key){
+async function savePortsBrowser(key){
     console.log("renderer.js");
-    window.firmware.savePorts(key)
+    localStorage.setItem(key, JSON.stringify(await window.firmware.getPorts()));
+    // Get ports from storage and log them in one line
+    console.log(`${key}: ${localStorage.getItem(key)}`);
 }
 
-let selector = document.getElementById("firmwareSelector");
-// Add event listener to selector that calls saveFirmwareVersion() when changed with this.value as argument on change
-selector.addEventListener("change", function () {
-    saveFirmwareVersion(this.value);
-});
+async function loadPortsBrowser(key){
+    console.log("renderer.js");
+    const ports = JSON.parse(localStorage.getItem(key));
+    console.log(`${key}: ${JSON.stringify(ports)}`);
+    return ports;
+}
 
-saveFirmwareVersion(selector.value);
+async function updateMouseBrowser() {
+    const beforePorts = localStorage.getItem("beforePorts");
+    const afterPorts = localStorage.getItem("afterPorts");
 
-function saveFirmwareVersion(version) {
-    let firmware = selector.value;
-    window.storage.store(firmware);
-    console.log("Saved firmware version: " + version + "render.js");
+    console.log(JSON.stringify(beforePorts, null, 4));
+    console.log(JSON.stringify(afterPorts, null, 4));
+
+    const pluggedInPorts = JSON.stringify(window.firmware.getNewPorts(beforePorts, afterPorts));
+
+    // Get firmware version from local storage
+    const firmwareVersion = localStorage.getItem("firmwareVersion");
+
+    await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
 }
 

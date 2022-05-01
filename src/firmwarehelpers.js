@@ -1,44 +1,33 @@
-const { getComPorts, getNewlyPluggedInPorts, updateMouse } = require('./firmwareutil.js');
-//log all the imports from first line of code
+const { updateMouse } = require('./firmwareutil.js');
+const { list } = require('serialport');
 
-// Function that takes in a key and saves the com ports as json to local storage
-// Called by onload to save the ports before and after plugging in the mouse
-// Saving both lists to beforePorts and afterPorts
 const os = require('os');
-const storage = require('electron-json-storage');
 const { Console } = require('console');
 
-storage.setDataPath(os.tmpdir());
+async function getComPorts() {
+  console.log("Retrieving all Serial Ports...");
+  let ports = [];
+  let portList = await list();
+  for (const port of portList) {
+      ports.push(port);
+      console.log(`Port: ${port.path}`);
+  }
 
-async function saveComPorts(key){
-  const dataPath = storage.getDataPath();
-  console.log(dataPath);
-  const comPorts = await getComPorts();
-  //store comports to locals storage with electron-json-storage
-  console.log(comPorts);
-  storage.set(key, comPorts, function(error) {
-    if (error) console.log("urmom");
-  });
-  //for loop that prints out every object in comports
+  console.log(`Found ${ports.length} ports!`);
+  return ports;
 }
 
-function updateMouseHelper(){
+async function updateMouseHelper(pluggedInPorts, firmwareVersion){
   console.log('Updating mouse');
-  const beforePorts = storage.get('beforePorts', function(error) {
-    if (error) throw error;
-  });
-  const afterPorts = storage.get('afterPorts', function(error) {
-    if (error) throw error;
-  });
 
-  // Get the ports that were plugged in
-  const pluggedInPorts = getNewlyPluggedInPorts(beforePorts, afterPorts);
-
-  console.log(`Plugged in ports: ${pluggedInPorts}`);
-
+  if (Object.keys(pluggedInPorts).length === 0) {
+    console.log('No new com ports plugged in empty object');
+    return;
+  }
+  
   // If there are no plugged in ports, return
   if (pluggedInPorts.length === 0) {
-    console.error('No new com ports plugged in');
+    console.error('No new com ports plugged in empty array');
     return;
   }
 
@@ -49,18 +38,19 @@ function updateMouseHelper(){
   }
 
   // If there is only one plugged in port, update the mouse
-
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
-    const firmwareVersion = localStorage.getItem('firmwareVersion');
-    console.log("started update process");
+    console.log(`Started update process with firmware version: ${firmwareVersion}`);
     let success = updateMouse(port, firmwareVersion);
-    console.log("finished update process");
+    console.log("Finished update process");
+    Console.log(success ? "Success" : "Failure");
+    return success;
   }
-  Console.log(success ? "success" : "failure");
-  return success;
+  
 }
 
-
-module.exports.saveComPorts = saveComPorts;
-module.exports.updateMouseHelper = updateMouseHelper;
+// export getComPorts, updateMouseHelper
+module.exports = {
+  getComPorts,
+  updateMouseHelper
+}

@@ -1,13 +1,14 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const ipcMain = require('electron').ipcMain;
-const {saveComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
-const storage = require('electron-json-storage');
+const { getComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
+const { getNewlyPluggedInPorts } = require('./firmwareutil.js');
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 453,
-    height: 453,
+    width: 1000,
+    height: 483,
     webPreferences: {
       
       preload: `${__dirname}/preload.js`
@@ -28,39 +29,26 @@ function createWindow () {
   if (process.platform === 'win32') {
     mainWindow.setSize(468, 486);
   }
-}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-  ipcMain.on('set-title', (event, title) => {
+  ipcMain.handle('exit', (event, title) => {
     app.quit();
   })
-  ipcMain.on('save-ports', (event, key) => {
-    console.log("main.js");
-    saveComPorts(key);
+
+  ipcMain.handle('get-ports', async (event, beforePorts, afterPorts) => { 
+    return await getComPorts(); 
   })
-  
-  ipcMain.on('update-mouse', (event, key) => {
-    console.log("main.js");
-    updateMouseHelper();
+
+  ipcMain.handle('get-new-ports', (event, beforePorts, afterPorts) => {
+    return getNewlyPluggedInPorts(beforePorts, afterPorts);
   })
-  ipcMain.on('save-in-localstorage', (event, firmware) => {
-    console.log("savebefore");
-    //save firmware to local storage with electron-json-storage
-    storage.set('firmwareVersion', firmware, function(error) {
-      if (error) throw error;
-    });
-    console.log("FirmwareVersion"+ firmware);
-    console.log(`Saved ${firmware} to ${dataPath} under key ${key}`);
-  })
-  ipcMain.on('get-from-localstorage', (event, key) => {
-    //get value that is saved in key from local storage with electron-json-storage
-    const beforePorts = storage.get(key, function(error) {
-      if (error) throw error;
-    });
+
+  ipcMain.handle('update-mouse', async (event, pluggedInPorts, firmwareVersion) => {
+    return await updateMouseHelper(pluggedInPorts, firmwareVersion);
   })
 
   //console.log("Saved firmware version: " + version);
