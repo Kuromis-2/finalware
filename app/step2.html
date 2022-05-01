@@ -7,7 +7,7 @@
     <title>Finalware</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="savePortsBrowser('beforePorts')">
+<body>
     <script src="../src/renderer.js"></script>
     <script>
         function next() {
@@ -31,7 +31,7 @@
         
         <div id="buttons">
             <div>
-                <button id="exit" class="btn" onclick="closeapp()" href="">Exit</button>
+                <button id="exit" class="btn" onclick="closeapp();" href="">Exit</button>
             </div>
             
             <div id="rightbuttons">
@@ -40,5 +40,8 @@
             </div>
             
         </div>
+        <script>
+            savePortsBrowser('beforePorts')
+        </script>
 </body>
 </html>
