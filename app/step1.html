@@ -10,6 +10,14 @@
 
 <body>
      <script src=""> </script>
+     <script>
+        function next() {
+        window.location.href = "step2.html";
+    }
+    function back() {
+        window.location.href = "index.html";
+    }
+    </script>
         <div>
             <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
         <div id="content">
@@ -25,8 +33,8 @@
             </div>
             
             <div id="rightbuttons">
-                <a class="btn" href="index.html">Back</a>
-                <a class="btn" href="step2.html">Next</a>
+                <button class="btn" onclick="back();">Back</button>
+                <button class="btn" onclick="next();">Next</button>
             </div>
             
         </div>

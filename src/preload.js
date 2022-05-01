@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    setTitle: (title) => ipcRenderer.invoke('set-title', title),
+    exit: (title) => ipcRenderer.invoke('exit'),
 })
 
 contextBridge.exposeInMainWorld('firmware', {

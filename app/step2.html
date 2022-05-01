@@ -9,6 +9,15 @@
 </head>
 <body onload="savePortsBrowser('beforePorts')">
     <script src="../src/renderer.js"></script>
+    <script>
+        function next() {
+        window.location.href = "step3.html";
+    }
+    function back() {
+        window.location.href = "step1.html";
+    }
+    </script>
+    
         <div>
             <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
         <div id="content">
@@ -26,8 +35,8 @@
             </div>
             
             <div id="rightbuttons">
-                <a class="btn" href="step1.html">Back</a>
-                <a class="btn" href="step3.html">Next</a>
+                <button class="btn" onclick="back();">Back</button>
+                <button class="btn" onclick="next();">Next</button>
             </div>
             
         </div>

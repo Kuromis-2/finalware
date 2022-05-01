@@ -1,6 +1,6 @@
 const button = document.getElementById('exit');
 function closeapp() {
-    window.electronAPI.setTitle("urmom");
+    window.electronAPI.exit();
 }
 
 async function savePortsBrowser(key){

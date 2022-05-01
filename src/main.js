@@ -3,8 +3,9 @@ const path = require('path')
 const ipcMain = require('electron').ipcMain;
 const { getComPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
 const { getNewlyPluggedInPorts } = require('./firmwareutil.js');
-
+console.log("main.js loaded");
 function createWindow () {
+  console.log("createWindow got executed")
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1000,
@@ -20,7 +21,9 @@ function createWindow () {
 
   //mainWindow.resizable = false;
   // and load the index.html of the app.
+  console.log("loading index.html")
   mainWindow.loadFile('app/index.html')
+  console.log("index.html loaded")
 
   // TODO: Remove
   mainWindow.setAlwaysOnTop(true, 'screen');
@@ -33,7 +36,14 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+
+
+
+
+
+}
 app.whenReady().then(() => {
+  console.log("App is ready!");
   createWindow()
   ipcMain.handle('exit', (event, title) => {
     app.quit();
@@ -67,9 +77,4 @@ try {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
-ipcMain.on('set-title', (event, title) => {
-  const webContents = event.sender
-  const win = BrowserWindow.fromWebContents(webContents)
-  win.setTitle(title)
-})}
 //ipc function that exits the app

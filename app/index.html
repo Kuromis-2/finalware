@@ -12,8 +12,12 @@
     <script src="../src/renderer.js">
         
     </script>
-    <script>
-
+    <script> function next() {
+        window.location.href = "step1.html";
+    }
+    function back() {
+        
+    }
     </script>
         <div>
             <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
@@ -31,9 +35,10 @@
             
             <div id="rightbuttons">
                 <button class="btn" href="index.html">Back</button>
-                <button class="btn" href="step1.html">Next</button>
+                <button class="btn" onclick="next();">Next</button>
             </div>
             
         </div>
+        
 </body>
 </html>
