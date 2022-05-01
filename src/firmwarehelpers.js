@@ -1,13 +1,48 @@
 const { updateMouse } = require('./firmwareutil.js');
-const { list } = require('serialport');
+const SerialPort = require('serialport');
+const https = require('https')
+const fs = require('fs')
 
-const os = require('os');
-const { Console } = require('console');
+const FIRMWARE_PATH = "firmware.zip"
+
+async function downloadFirmware(firmwareVersion) {
+  const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/firmwarelookup.json";
+
+  // Request the firmware lookup
+  https.get(firmwareLookup, response => {
+    let data = '';
+    response.on('data', chunk => {
+      data += chunk;
+    });
+    response.on('end', () => {
+      data = JSON.parse(data);
+      
+      // Get the link of the firmware version
+      const baseLink = data["baseLink"];
+      const fileName = data[firmwareVersion]["fileName"];
+
+      const firmwareLink = `${baseLink}${fileName}`;
+      console.log(`Downloading firmware from ${firmwareLink}`);
+
+      https.get(firmwareLink, (response) => {
+        const writeStream = fs.createWriteStream(FIRMWARE_PATH);
+      
+        response.pipe(writeStream);
+      
+        writeStream.on("finish", () => {
+          writeStream.close();
+          console.log("Download Completed");
+        });
+      });
+
+    })
+  });
+}
 
 async function getComPorts() {
   console.log("Retrieving all Serial Ports...");
   let ports = [];
-  let portList = await list();
+  let portList = await SerialPort.list();
   for (const port of portList) {
       ports.push(port);
       console.log(`Port: ${port.path}`);
@@ -62,8 +97,9 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion){
   // If there is only one plugged in port, update the mouse
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
+    await downloadFirmware(firmwareVersion);
     console.log(`Started update process with firmware version: ${firmwareVersion}`);
-    let success = await updateMouse(port, firmwareVersion);
+    let success = await updateMouse(port, FIRMWARE_PATH);
     console.log("Finished update process");
     console.log(success ? "Success" : "Failure");
     return success;

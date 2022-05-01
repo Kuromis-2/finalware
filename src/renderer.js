@@ -25,4 +25,3 @@ async function updateMouseBrowser() {
 
     window.location.href = success ? "success.html" : "failed.html";
 }
-
