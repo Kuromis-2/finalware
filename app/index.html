@@ -13,10 +13,7 @@
         
     </script>
     <script> function next() {
-        window.location.href = "failed.html";
-    }
-    function back() {
-        window.location.href = "success.html";
+        window.location.href = "step1.html";
     }
     </script>
         <div>
@@ -30,12 +27,12 @@
         </div>
         <div id="buttons">
             <div>
-                <button class="btn" onclick="closeapp();" href="">Exit</button>
+                <button class="btn" onclick="closeapp()" href="">Exit</button>
             </div>
             
             <div id="rightbuttons">
-                <button class="btn" onclick="back();">Back</button>
-                <button class="btn" onclick="next();">Next</button>
+                <button class="btn">Back</button>
+                <button class="btn" onclick="next()">Next</button>
             </div>
             
         </div>

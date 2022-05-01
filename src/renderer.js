@@ -22,5 +22,7 @@ async function updateMouseBrowser() {
     const firmwareVersion = localStorage.getItem("firmwareVersion");
 
     const success = await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
+
+    window.location.href = success ? "success.html" : "failed.html";
 }
 

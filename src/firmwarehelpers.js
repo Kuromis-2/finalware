@@ -63,7 +63,7 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion){
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
     console.log(`Started update process with firmware version: ${firmwareVersion}`);
-    let success = updateMouse(port, firmwareVersion);
+    let success = await updateMouse(port, firmwareVersion);
     console.log("Finished update process");
     console.log(success ? "Success" : "Failure");
     return success;
