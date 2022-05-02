@@ -7,9 +7,6 @@
     "start": "electron-forge start",
     "win-fix": "del /s /q node_modules && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
     "linux-fix": "./node_modules/.bin/electron-rebuild",
-    "build:linux": "electron-builder --linux",
-    "build:win": "electron-builder --win",
-    "postinstall": "electron-builder install-app-deps",
     "prettify": "prettier --write .",
     "package": "electron-forge package",
     "make": "electron-forge make"
@@ -40,7 +37,9 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "app/finalmouse-logo.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -56,10 +55,6 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
           "config": {}
         }
       ]
