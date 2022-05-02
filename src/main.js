@@ -22,6 +22,7 @@ function createWindow() {
         enableRemoteModule: true,
         nodeIntegration: true,
         autoHideMenuBar: true,
+        icon: `${__dirname}/../app/finalmouse-logo.ico`
     });
 
     //mainWindow.resizable = false;
