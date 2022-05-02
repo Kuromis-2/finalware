@@ -5,8 +5,6 @@ firmwareSelector.addEventListener("change", function () {
     saveFirmwareVersion(this.value);
 });
 
-saveFirmwareVersion(firmwareSelector.value);
-
 function saveFirmwareVersion(version) {
     let value = firmwareSelector.value;
     // Save firmware in local storage

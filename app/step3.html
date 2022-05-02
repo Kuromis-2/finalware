@@ -26,11 +26,25 @@
             <form>
                 <label id="textlabel">Starlight-12:</label>
                 
-                <select id="firmwareSelector">
-                   <option class="option" value="1.2.0">Legendaries</option>
-                   <option class="option" value="1.2.0">Phantom/Pegasus</option>
-                   <option class="option" value="1.2.5">Poseidon/Pro</option>
-                </select>
+                <select id="firmwareSelector"></select>
+                <script src="../src/firmwareselector.js"></script>
+
+                <script>
+                    const qfirmwareSelector = document.getElementById("firmwareSelector");
+                    lookUpVersions().then(versions =>
+                    {
+                        for(const [mouse, version] of Object.entries(versions)) {
+                            let option = document.createElement("option");
+                            option.value = version;
+                            option.innerText = mouse;
+                            option.className = "option"
+                            qfirmwareSelector.appendChild(option);
+                        }
+
+                        saveFirmwareVersion(qfirmwareSelector.value);
+                    });
+                    
+                </script>
                 
             </form>
         </div>
@@ -47,10 +61,7 @@
             </div>
             
         </div>
-    <script>
-        
-    </script>
-    <script src="../src/firmwareselector.js"></script>
+    
     <script>
         savePortsBrowser('afterPorts')
     </script>

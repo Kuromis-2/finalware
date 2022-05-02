@@ -1,7 +1,8 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const ipcMain = require('electron').ipcMain;
-const { getComPorts, getNewlyPluggedInPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
+const { getVersionLookup, getComPorts, getNewlyPluggedInPorts, updateMouseHelper} =  require('./firmwarehelpers.js');
+
 console.log("main.js loaded");
 function createWindow () {
   console.log("createWindow got executed")
@@ -35,17 +36,16 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-
-
-
-
-
 }
 app.whenReady().then(() => {
   console.log("App is ready!");
   createWindow()
   ipcMain.handle('exit', (event, title) => {
     app.quit();
+  })
+
+  ipcMain.handle('get-versions', async (event) => { 
+    return await getVersionLookup(); 
   })
 
   ipcMain.handle('get-ports', async (event) => { 

@@ -12,8 +12,8 @@ function loadPortsBrowser(key){
     return ports;
 }
 
-function lookUpVersions() {
-    
+async function lookUpVersions() {
+    return await window.firmware.getVersions();
 }
 
 async function updateMouseBrowser() {

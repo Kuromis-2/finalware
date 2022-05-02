@@ -6,54 +6,56 @@ const fs = require('fs')
 const FIRMWARE_PATH = "firmware.zip"
 
 async function downloadFirmware(firmwareVersion) {
-  const versions = await getVersionLookup();
-  console.log(`JSON.stringify(versions) = ${JSON.stringify(versions)}`);
+  if(!firmwareVersion) throw new Error("firmwareVersion is null");
   const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/firmwarelookup.json";
 
-  // Request the firmware lookup
-  https.get(firmwareLookup, response => {
-    let data = '';
-    response.on('data', chunk => {
-      data += chunk;
-    });
-    response.on('end', () => {
-      data = JSON.parse(data);
-      
-      // Get the link of the firmware version
-      const baseLink = data["baseLink"];
-      const fileName = data[firmwareVersion]["fileName"];
-
-      const firmwareLink = `${baseLink}${fileName}`;
-      console.log(`Downloading firmware from ${firmwareLink}`);
-
-      https.get(firmwareLink, (response) => {
-        const writeStream = fs.createWriteStream(FIRMWARE_PATH);
-      
-        response.pipe(writeStream);
-      
-        writeStream.on("finish", () => {
-          writeStream.close();
-          console.log("Download Completed");
-        });
+  new Promise((resolve, reject) => {
+    // Request the firmware lookup
+    https.get(firmwareLookup, response => {
+      let data = '';
+      response.on('data', chunk => {
+        data += chunk;
       });
+      response.on('end', () => {
+        data = JSON.parse(data);
 
-    })
+        // Get the link of the firmware version
+        const baseLink = data["baseLink"];
+        const fileName = data[firmwareVersion]["fileName"];
+
+        const firmwareLink = `${baseLink}${fileName}`;
+        console.log(`Downloading firmware from ${firmwareLink}`);
+
+        https.get(firmwareLink, (response) => {
+          const writeStream = fs.createWriteStream(FIRMWARE_PATH);
+        
+          response.pipe(writeStream);
+        
+          writeStream.on("finish", () => {
+            writeStream.close();
+            console.log("Download Completed");
+          });
+        });
+
+      })
+    });
   });
 }
 
 async function getVersionLookup() {
   const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/versionlookup.json";
 
-  // Request the firmware lookup
-  https.get(firmwareLookup, response => {
-    let data = '';
-    response.on('data', chunk => {
-      data += chunk;
+  // Fetch data from firmwareLookup with a https request and return JSON
+  return new Promise((resolve, reject) => {
+    https.get(firmwareLookup, response => {
+      let data = '';
+      response.on('data', chunk => {
+        data += chunk;
+      });
+      response.on('end', () => {
+        resolve(JSON.parse(data));
+      });
     });
-    response.on('end', () => {
-      data = JSON.parse(data);
-      return data;
-    })
   });
 }
 
@@ -94,8 +96,6 @@ function getNewlyPluggedInPorts(
 }
 
 async function updateMouseHelper(pluggedInPorts, firmwareVersion){
-  console.log('Updating mouse');
-
   if (Object.keys(pluggedInPorts).length === 0) {
     console.log('No new com ports plugged in empty object');
     return;
@@ -128,6 +128,7 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion){
 
 // export getComPorts, updateMouseHelper
 module.exports = {
+  getVersionLookup,
   getComPorts,
   getNewlyPluggedInPorts,
   updateMouseHelper
