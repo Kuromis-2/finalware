@@ -45,8 +45,7 @@
         "nsis",
         "portable"
       ],
-      "icon": "./app/finalmouse-logo.png",
-      "category": "Utility"
+      "icon": "./app/finalmouse-logo.png"
     }
   }
 }

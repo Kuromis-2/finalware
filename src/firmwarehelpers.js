@@ -9,35 +9,38 @@ async function downloadFirmware(firmwareVersion) {
   if(!firmwareVersion) throw new Error("firmwareVersion is null");
   const firmwareLookup = "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/firmwarelookup.json";
 
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     // Request the firmware lookup
     https.get(firmwareLookup, response => {
       let data = '';
       response.on('data', chunk => {
         data += chunk;
       });
-      response.on('end', () => {
-        data = JSON.parse(data);
 
-        // Get the link of the firmware version
-        const baseLink = data["baseLink"];
-        const fileName = data[firmwareVersion]["fileName"];
+      resolve(new Promise((resolve, reject) => {
+        response.on('end', () => {
+          data = JSON.parse(data);
 
-        const firmwareLink = `${baseLink}${fileName}`;
-        console.log(`Downloading firmware from ${firmwareLink}`);
+          // Get the link of the firmware version
+          const baseLink = data["baseLink"];
+          const fileName = data[firmwareVersion]["fileName"];
 
-        https.get(firmwareLink, (response) => {
-          const writeStream = fs.createWriteStream(FIRMWARE_PATH);
-        
-          response.pipe(writeStream);
-        
-          writeStream.on("finish", () => {
-            writeStream.close();
-            console.log("Download Completed");
+          const firmwareLink = `${baseLink}${fileName}`;
+          console.log(`Downloading firmware from ${firmwareLink}`);
+
+          https.get(firmwareLink, (response) => {
+            const writeStream = fs.createWriteStream(FIRMWARE_PATH);
+          
+            response.pipe(writeStream);
+          
+            writeStream.on("finish", () => {
+              writeStream.close();
+              console.log("Download Completed");
+              resolve();
+            });
           });
         });
-
-      })
+      }));
     });
   });
 }

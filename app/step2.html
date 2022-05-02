@@ -7,15 +7,19 @@
     <title>Finalware</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <script src="../src/renderer.js"></script>
     <script>
+        savePortsBrowser('beforePorts')
+    </script>
+    <script>
         function next() {
-        window.location.href = "step3.html";
-    }
-    function back() {
-        window.location.href = "step1.html";
-    }
+            window.location.href = "step3.html";
+        }
+        function back() {
+            window.location.href = "step1.html";
+        }
     </script>
     
         <div>
@@ -40,8 +44,5 @@
             </div>
             
         </div>
-        <script>
-            savePortsBrowser('beforePorts')
-        </script>
 </body>
 </html>
