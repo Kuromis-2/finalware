@@ -1,10 +1,11 @@
-//convert the import statement to a import statement using 
-const { DfuUpdates, DfuTransportUsbSerial, DfuOperation } = require('pc-nrf-dfu-js');
+//convert the import statement to a import statement using
+const {
+    DfuUpdates,
+    DfuTransportUsbSerial,
+    DfuOperation,
+} = require("pc-nrf-dfu-js");
 
-async function updateMouse(
-    port,
-    firmwareFilePath
-) {
+async function updateMouse(port, firmwareFilePath) {
     if (port == null) throw new Error("Port is null");
     if (firmwareFilePath == null) throw new Error("Firmware path is null");
 

@@ -36,18 +36,18 @@
 
 #textlabel {
   font-family: "Rubik", sans-serif;
-  color: #F1F1F1;
+  color: #f1f1f1;
 }
 
 #selector {
   background-color: #262626;
   font-family: "Rubik", sans-serif;
-  color: #F1F1F1;
+  color: #f1f1f1;
 }
 
 .option {
   background-color: #262626;
-  color: #F1F1F1;
+  color: #f1f1f1;
 }
 
 ul {
@@ -80,7 +80,7 @@ ul {
   border-radius: 6px;
   border: none;
   font-size: 14px;
-  color: #F1F1F1;
+  color: #f1f1f1;
   max-width: 96px;
   max-height: 32px;
   padding-left: 16px;
@@ -97,7 +97,7 @@ ul {
   background-color: #262626;
   border-radius: 6px;
   border: none;
-  color: #F1F1F1;
+  color: #f1f1f1;
   max-width: 96px;
   max-height: 32px;
   text-decoration: none;
@@ -123,14 +123,16 @@ ul {
 #buttons {
   margin-left: 6px;
   margin-right: 4px;
+  display: flex;
+  flex-direction: row;
 }
 
 body {
-  color: #F1F1F1;
+  color: #f1f1f1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
   height: 450px;
   width: 450px;
   overflow: hidden;

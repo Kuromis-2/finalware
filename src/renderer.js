@@ -1,13 +1,13 @@
-const button = document.getElementById('exit');
+const button = document.getElementById("exit");
 function closeapp() {
     window.electronAPI.exit();
 }
 
-async function savePortsBrowser(key){
+async function savePortsBrowser(key) {
     localStorage.setItem(key, JSON.stringify(await window.firmware.getPorts()));
 }
 
-function loadPortsBrowser(key){
+function loadPortsBrowser(key) {
     const ports = JSON.parse(localStorage.getItem(key));
     return ports;
 }
@@ -17,15 +17,21 @@ async function lookUpVersions() {
 }
 
 async function updateMouseBrowser() {
-    const beforePorts = loadPortsBrowser('beforePorts');
-    const afterPorts = loadPortsBrowser('afterPorts');
+    const beforePorts = loadPortsBrowser("beforePorts");
+    const afterPorts = loadPortsBrowser("afterPorts");
 
-    const pluggedInPorts = await window.firmware.getNewPorts(beforePorts, afterPorts);
+    const pluggedInPorts = await window.firmware.getNewPorts(
+        beforePorts,
+        afterPorts
+    );
 
     // Get firmware version from local storage
     const firmwareVersion = localStorage.getItem("firmwareVersion");
 
-    const success = await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
+    const success = await window.firmware.updateMouse(
+        pluggedInPorts,
+        firmwareVersion
+    );
 
     window.location.href = success ? "success.html" : "failed.html";
 }

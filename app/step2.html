@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalware</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Finalware</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<body>
-    <script src="../src/renderer.js"></script>
-    <script>
-        savePortsBrowser('beforePorts')
-    </script>
-    <script>
-        function next() {
-            window.location.href = "step3.html";
-        }
-        function back() {
-            window.location.href = "step1.html";
-        }
-    </script>
-    
+    <body>
+        <script src="../src/renderer.js"></script>
+        <script>
+            savePortsBrowser("beforePorts");
+        </script>
+        <script>
+            function next() {
+                window.location.href = "step3.html";
+            }
+            function back() {
+                window.location.href = "step1.html";
+            }
+        </script>
+
         <div>
-            <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
-        <div id="content">
-            <div id="bigger">Step 2: Enable DFU Mode</div>
-            <div id="smaller">Turn off your mouse on the bottom and reconnect the mouse to the USB cable while pressing the DPI and middle mouse button simultaneously.</div>
-            <ul>
-                
-            </ul>
+            <div id="header">
+                <img src="../app/finalmouse-logo.png" alt="log" />
+            </div>
+            <div id="content">
+                <div id="bigger">Step 2: Enable DFU Mode</div>
+                <div id="smaller">
+                    Turn off your mouse on the bottom and reconnect the mouse to
+                    the USB cable while pressing the DPI and middle mouse button
+                    simultaneously.
+                </div>
+                <ul></ul>
+            </div>
         </div>
-        </div>
-        
+
         <div id="buttons">
             <div>
-                <button id="exit" class="btn" onclick="closeapp();" href="">Exit</button>
+                <button id="exit" class="btn" onclick="closeapp();" href="">
+                    Exit
+                </button>
             </div>
-            
+
             <div id="rightbuttons">
                 <button class="btn" onclick="back()">Back</button>
                 <button class="btn" onclick="next()">Next</button>
             </div>
-            
         </div>
-</body>
+    </body>
 </html>

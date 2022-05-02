@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalware</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Finalware</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<body>
-    <script src="../src/renderer.js"></script>
-    <script>
-        savePortsBrowser('afterPorts')
-    </script>
-    <script>
-        function next() {
-        window.location.href = "step4.html";
-    }
-    function back() {
-        window.location.href = "step2.html";
-    }
-    </script>
-    <div>
-        <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
-    <div id="content">
-        <div id="bigger">Step 3: Scan for DFU Devices</div>
-        <div id="smaller">Choose your mouse in the menu.</div>
-        <form>
-            <label id="textlabel">Starlight-12:</label>
-            
-            <select id="firmwareSelector"></select>
-            <script src="../src/firmwareselector.js"></script>
-
-            <script>
-                const qfirmwareSelector = document.getElementById("firmwareSelector");
-                lookUpVersions().then(versions =>
-                {
-                    for(const [mouse, version] of Object.entries(versions)) {
-                        let option = document.createElement("option");
-                        option.value = version;
-                        option.innerText = mouse;
-                        option.className = "option"
-                        qfirmwareSelector.appendChild(option);
-                    }
-
-                    saveFirmwareVersion(qfirmwareSelector.value);
-                });
-                
-            </script>
-            
-        </form>
-    </div>
-    </div>
-    
-    <div id="buttons">
+    <body>
+        <script src="../src/renderer.js"></script>
+        <script>
+            savePortsBrowser("afterPorts");
+        </script>
+        <script>
+            function next() {
+                window.location.href = "step4.html";
+            }
+            function back() {
+                window.location.href = "step2.html";
+            }
+        </script>
         <div>
-            <button id="exit" class="btn" onclick="closeapp()" href="">Exit</button>
-        </div>
-        
-        <div id="rightbuttons">
-            <button class="btn" onclick="back()">Back</button>
-            <button class="btn" onclick="next()">Next</button>
-        </div>
-        
-    </div>
-</body>
-    
+            <div id="header">
+                <img src="../app/finalmouse-logo.png" alt="log" />
+            </div>
+            <div id="content">
+                <div id="bigger">Step 3: Scan for DFU Devices</div>
+                <div id="smaller">Choose your mouse in the menu.</div>
+                <form>
+                    <label id="textlabel">Starlight-12:</label>
 
+                    <select id="firmwareSelector"></select>
+                    <script src="../src/firmwareselector.js"></script>
 
+                    <script>
+                        const qfirmwareSelector =
+                            document.getElementById("firmwareSelector");
+                        lookUpVersions().then((versions) => {
+                            for (const [mouse, version] of Object.entries(
+                                versions
+                            )) {
+                                let option = document.createElement("option");
+                                option.value = version;
+                                option.innerText = mouse;
+                                option.className = "option";
+                                qfirmwareSelector.appendChild(option);
+                            }
+
+                            saveFirmwareVersion(qfirmwareSelector.value);
+                        });
+                    </script>
+                </form>
+            </div>
+        </div>
+
+        <div id="buttons">
+            <div>
+                <button id="exit" class="btn" onclick="closeapp()" href="">
+                    Exit
+                </button>
+            </div>
+
+            <div id="rightbuttons">
+                <button class="btn" onclick="back()">Back</button>
+                <button class="btn" onclick="next()">Next</button>
+            </div>
+        </div>
+    </body>
 </html>

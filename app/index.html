@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalware</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Finalware</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<body>
-    <script src="../src/renderer.js">
-        
-    </script>
-    <script> function next() {
-        window.location.href = "step1.html";
-    }
-    </script>
+    <body>
+        <script src="../src/renderer.js"></script>
+        <script>
+            function next() {
+                window.location.href = "step1.html";
+            }
+        </script>
         <div>
-            <div id="header"><img src="../app/finalmouse-logo.png" alt="log"></div>
-        <div id="content">
-            <div id="bigger">Starlight-12 Firmware Utility</div>
-            <div id="smaller">Disable all background monitoring apps including NZXT CAM, Corsair iCUE and Razer Cortex to ensure 
-                that the firmware can be flashed uniterrupted.</div>
-                
+            <div id="header">
+                <img src="../app/finalmouse-logo.png" alt="log" />
+            </div>
+            <div id="content">
+                <div id="bigger">Starlight-12 Firmware Utility</div>
+                <div id="smaller">
+                    Disable all background monitoring apps including NZXT CAM,
+                    Corsair iCUE and Razer Cortex to ensure that the firmware
+                    can be flashed uniterrupted.
+                </div>
             </div>
         </div>
         <div id="buttons">
             <div>
                 <button class="btn" onclick="closeapp()" href="">Exit</button>
             </div>
-            
+
             <div id="rightbuttons">
                 <button class="btn">Back</button>
                 <button class="btn" onclick="next()">Next</button>
             </div>
-            
         </div>
-        
-</body>
+    </body>
 </html>
