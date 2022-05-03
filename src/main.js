@@ -25,7 +25,7 @@ function createWindow() {
         icon: `${__dirname}/../app/finalmouse-logo.ico`
     });
 
-    //mainWindow.resizable = false;
+    mainWindow.resizable = false;
     // and load the index.html of the app.
     console.log("loading index.html");
     mainWindow.loadFile("app/index.html");

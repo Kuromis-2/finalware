@@ -55,7 +55,12 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "config": {
+            "options": {
+              "maintainer": "Kuromis-2",
+              "homepage": "https://github.com/Kuromis-2"
+            }
+          }
         }
       ]
     }
