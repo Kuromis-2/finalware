@@ -11,10 +11,19 @@ const {
 console.log("main.js loaded");
 function createWindow() {
     console.log("createWindow got executed");
+
+    let x = 453;
+    let y = 453;
+    
+    if (process.platform === "win32") { // Windows had some window size issues
+        x += 15;
+        y += 33
+    }
+
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 453,
-        height: 453,
+        width: x,
+        height: y,
         webPreferences: {
             devTools: !app.isPackaged,
             preload: `${__dirname}/preload.js`,
@@ -25,24 +34,24 @@ function createWindow() {
         icon: `${__dirname}/../app/finalmouse-logo.ico`
     });
 
-    //mainWindow.resizable = false;
+    
     // and load the index.html of the app.
-    console.log("loading index.html");
+    console.log("Loading index.html");
     mainWindow.loadFile("app/index.html");
     console.log("index.html loaded");
 
-    // TODO: Remove
-    mainWindow.setAlwaysOnTop(true, "screen");
-    // mainWindow.webContents.openDevTools()
-    //check if current os is windows and change window size
-    if (process.platform === "win32") {
-        mainWindow.setSize(468, 486);
+    if(!app.isPackaged) {
+        mainWindow.resizable = false;
     }
 
-    // This method will be called when Electron has finished
-    // initialization and is ready to create browser windows.
-    // Some APIs can only be used after this event occurs.
+    if(app.isPackaged) {
+        mainWindow.setAlwaysOnTop(true, "screen");
+    }
 }
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     console.log("App is ready!");
     createWindow();
