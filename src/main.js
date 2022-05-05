@@ -12,22 +12,23 @@ console.log("main.js loaded");
 function createWindow() {
     console.log("createWindow got executed");
 
-    let x = 453;
-    let y = 453;
+    // https://github.com/electron/electron/issues/13670
+    let windowWidth = 453;
+    let windowHeight = 453;
     
     if (process.platform === "win32") { // Windows and Mac had some window size issues
-        x += 15;
-        y += 33;
+        windowWidth += 15;
+        windowHeight += 33;
     } 
     else if (process.platform === "darwin") {
-        x -= 1;
-        y += 22;
+        windowWidth -= 1;
+        windowHeight += 22;
     }
 
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: x,
-        height: y,
+        width: windowWidth,
+        height: windowHeight,
         webPreferences: {
             devTools: !app.isPackaged,
             preload: `${__dirname}/preload.js`,
