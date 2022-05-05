@@ -8,6 +8,7 @@
     "win-fix": "del /s /q node_modules && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
     "linux-fix": "./node_modules/.bin/electron-rebuild",
     "prettify": "prettier --write .",
+    "import": "npx electron-forge import",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
@@ -61,6 +62,10 @@
               "homepage": "https://github.com/Kuromis-2"
             }
           }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
         }
       ]
     }

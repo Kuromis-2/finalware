@@ -15,9 +15,13 @@ function createWindow() {
     let x = 453;
     let y = 453;
     
-    if (process.platform === "win32") { // Windows had some window size issues
+    if (process.platform === "win32") { // Windows and Mac had some window size issues
         x += 15;
-        y += 33
+        y += 33;
+    } 
+    else if (process.platform === "darwin") {
+        x -= 1;
+        y += 22;
     }
 
     // Create the browser window.
