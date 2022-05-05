@@ -34,7 +34,6 @@ function createWindow() {
         icon: `${__dirname}/../app/finalmouse-logo.ico`
     });
 
-    
     // and load the index.html of the app.
     console.log("Loading index.html");
     mainWindow.loadFile("app/index.html");
