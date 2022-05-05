@@ -46,6 +46,7 @@ function createWindow() {
 
     if(app.isPackaged) {
         mainWindow.resizable = false;
+        mainWindow.maximizable = false;
     }
 
     if(app.isPackaged) {
