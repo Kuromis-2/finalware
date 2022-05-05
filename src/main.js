@@ -39,7 +39,7 @@ function createWindow() {
     mainWindow.loadFile("app/index.html");
     console.log("index.html loaded");
 
-    if(!app.isPackaged) {
+    if(app.isPackaged) {
         mainWindow.resizable = false;
     }
 
