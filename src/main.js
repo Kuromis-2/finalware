@@ -49,7 +49,7 @@ function createWindow() {
         mainWindow.maximizable = false;
     }
 
-    if(app.isPackaged) {
+    if(!app.isPackaged) {
         mainWindow.setAlwaysOnTop(true, "screen");
     }
 }
