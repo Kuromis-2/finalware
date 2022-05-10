@@ -6,8 +6,8 @@ const {
 } = require("pc-nrf-dfu-js");
 
 async function updateMouse(port, firmwareFilePath) {
-    if (port == null) throw new Error("Port is null");
-    if (firmwareFilePath == null) throw new Error("Firmware path is null");
+    if (port == null) throw "Port is null";
+    if (firmwareFilePath == null) throw "Firmware path is null";
 
     let serialNumber = port.serialNumber;
 
@@ -15,13 +15,7 @@ async function updateMouse(port, firmwareFilePath) {
     const serialPort = new DfuTransportUsbSerial(serialNumber, 16);
     const dfuOperation = new DfuOperation(dfuUpdates, serialPort);
 
-    try {
-        await dfuOperation.start(true);
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
+    await dfuOperation.start(true);
 }
 
 module.exports.updateMouse = updateMouse;

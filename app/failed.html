@@ -22,6 +22,12 @@
             <div id="content">
                 <div id="bigger">Failed!</div>
                 <div id="smaller">:(</div>
+                <div id="smaller">:(</div>
+                <script>
+                    // Get the second smaller element and set the content to the error message from localStorage
+                    var smaller = document.getElementById("smaller");
+                    smaller.innerHTML = localStorage.getItem("error");
+                </script>
             </div>
         </div>
 

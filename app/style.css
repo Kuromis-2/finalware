@@ -1,149 +1,149 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /* Color Theme Swatches in Hex */
 .lds-dual-ring {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
 }
 
 .lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  border-color: #fff transparent #fff transparent;
-  animation: lds-dual-ring 1.6s ease-in-out infinite;
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.6s ease-in-out infinite;
 }
 
 @keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 .loadcontainer {
-  margin-right: 20px;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin-right: 20px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #textlabel {
-  font-family: "Rubik", sans-serif;
-  color: #f1f1f1;
+    font-family: "Rubik", sans-serif;
+    color: #f1f1f1;
 }
 
 #selector {
-  background-color: #262626;
-  font-family: "Rubik", sans-serif;
-  color: #f1f1f1;
+    background-color: #262626;
+    font-family: "Rubik", sans-serif;
+    color: #f1f1f1;
 }
 
 .option {
-  background-color: #262626;
-  color: #f1f1f1;
+    background-color: #262626;
+    color: #f1f1f1;
 }
 
 ul {
-  padding: 0;
-  list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 * {
-  user-select: none;
-  /* Standard */
-  -webkit-user-drag: none;
+    user-select: none;
+    /* Standard */
+    -webkit-user-drag: none;
 }
 
 #header {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #buttons {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn {
-  font-family: "Rubik", sans-serif;
-  background-color: #595859;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  border-radius: 6px;
-  border: none;
-  font-size: 14px;
-  color: #f1f1f1;
-  max-width: 96px;
-  max-height: 32px;
-  padding-left: 16px;
-  padding-right: 16px;
-  text-decoration: none;
+    font-family: "Rubik", sans-serif;
+    background-color: #595859;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    color: #f1f1f1;
+    max-width: 96px;
+    max-height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-decoration: none;
 }
 
 #back {
-  margin-right: 4px;
+    margin-right: 4px;
 }
 
 .btn:active {
-  font-family: "Rubik", sans-serif;
-  background-color: #262626;
-  border-radius: 6px;
-  border: none;
-  color: #f1f1f1;
-  max-width: 96px;
-  max-height: 32px;
-  text-decoration: none;
+    font-family: "Rubik", sans-serif;
+    background-color: #262626;
+    border-radius: 6px;
+    border: none;
+    color: #f1f1f1;
+    max-width: 96px;
+    max-height: 32px;
+    text-decoration: none;
 }
 
 #content {
-  margin-left: 12px;
+    margin-left: 12px;
 }
 
 #bigger {
-  font-family: "Rubik", sans-serif;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 1px;
+    font-family: "Rubik", sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 #smaller {
-  font-family: "Rubik", sans-serif;
-  width: 90%;
-  font-size: 16px;
+    font-family: "Rubik", sans-serif;
+    width: 90%;
+    font-size: 16px;
 }
 
 #buttons {
-  margin-left: 6px;
-  margin-right: 4px;
-  display: flex;
-  flex-direction: row;
+    margin-left: 6px;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: row;
 }
 
 body {
-  color: #f1f1f1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #0d0d0d;
-  height: 450px;
-  width: 450px;
-  overflow: hidden;
-  margin-left: 0px;
-  margin-top: 0px;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #0d0d0d;
+    height: 450px;
+    width: 450px;
+    overflow: hidden;
+    margin-left: 0px;
+    margin-top: 0px;
 }
 
 img {
-  height: 76px;
-  -webkit-filter: invert(1);
-  filter: invert(1);
+    height: 76px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
 
 /*# sourceMappingURL=style.css.map */

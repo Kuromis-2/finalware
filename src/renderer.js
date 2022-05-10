@@ -28,10 +28,18 @@ async function updateMouseBrowser() {
     // Get firmware version from local storage
     const firmwareVersion = localStorage.getItem("firmwareVersion");
 
-    const success = await window.firmware.updateMouse(
-        pluggedInPorts,
-        firmwareVersion
-    );
+    let success = false;
+
+    try {
+        success = await window.firmware.updateMouse(
+            pluggedInPorts,
+            firmwareVersion
+        );
+    }
+    catch (e) {
+        // Save error in local storage
+        localStorage.setItem("error", e);
+    }
 
     window.location.href = success ? "success.html" : "failed.html";
 }

@@ -15,12 +15,12 @@ function createWindow() {
     // https://github.com/electron/electron/issues/13670
     let windowWidth = 453;
     let windowHeight = 453;
-    
-    if (process.platform === "win32") { // Windows and Mac had some window size issues
+
+    if (process.platform === "win32") {
+        // Windows and Mac had some window size issues
         windowWidth += 15;
         windowHeight += 33;
-    } 
-    else if (process.platform === "darwin") {
+    } else if (process.platform === "darwin") {
         windowWidth -= 1;
         windowHeight += 22;
     }
@@ -36,7 +36,7 @@ function createWindow() {
         enableRemoteModule: true,
         nodeIntegration: true,
         autoHideMenuBar: true,
-        icon: `${__dirname}/../app/finalmouse-logo.ico`
+        icon: `${__dirname}/../app/finalmouse-logo.ico`,
     });
 
     // and load the index.html of the app.
@@ -44,12 +44,12 @@ function createWindow() {
     mainWindow.loadFile("app/index.html");
     console.log("index.html loaded");
 
-    if(app.isPackaged) {
+    if (app.isPackaged) {
         mainWindow.resizable = false;
         mainWindow.maximizable = false;
     }
 
-    if(!app.isPackaged) {
+    if (!app.isPackaged) {
         mainWindow.setAlwaysOnTop(true, "screen");
     }
 }
