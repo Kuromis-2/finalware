@@ -1,5 +1,5 @@
 {
-    "name": "finalware",
+    "name": "Finalware",
     "version": "1.0.0",
     "description": "tool to flash starlight-12",
     "main": "src/main.js",
@@ -43,18 +43,6 @@
             },
             "makers": [
                 {
-                    "name": "@electron-forge/maker-squirrel",
-                    "config": {
-                        "name": "finalware"
-                    }
-                },
-                {
-                    "name": "@electron-forge/maker-zip",
-                    "platforms": [
-                        "darwin"
-                    ]
-                },
-                {
                     "name": "@electron-forge/maker-deb",
                     "config": {
                         "options": {
@@ -62,17 +50,7 @@
                             "homepage": "https://github.com/Kuromis-2"
                         }
                     }
-                },
-                {
-                    "name": "@electron-forge/maker-rpm",
-                    "config": {}
-                },
-                {
-                    "name": "@electron-forge/maker-dmg",
-                    "config": {
-                      "format": "ULFO"
-                    }
-                  }
+                }
             ]
         }
     }
