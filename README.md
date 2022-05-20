@@ -15,5 +15,5 @@ We provide a .deb package for debian based system aswell as a zip file with a bi
 We provide a .dmg app package.
 
 ## Known Issues
-### Not able to access COM-Ports
+### Not able to access COM-Ports on linux
 The default user permissions on linux prevent our application to access the USB-Ports, to fix this you can change the permissions with the following command. ```sudo adduser $USER dialout```
