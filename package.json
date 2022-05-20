@@ -17,6 +17,7 @@
     "devDependencies": {
         "@electron-forge/cli": "^6.0.0-beta.63",
         "@electron-forge/maker-deb": "^6.0.0-beta.63",
+        "@electron-forge/maker-dmg": "^6.0.0-beta.63",
         "@electron-forge/maker-rpm": "^6.0.0-beta.63",
         "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
         "@electron-forge/maker-zip": "^6.0.0-beta.63",
@@ -50,6 +51,19 @@
                             "homepage": "https://github.com/Kuromis-2"
                         }
                     }
+<<<<<<< HEAD
+=======
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-dmg",
+                    "config": {
+                        "format": "ULFO"
+                    }
+>>>>>>> 6a3dd0e8774973df98b299d92ce631713a32aa5c
                 }
             ]
         }
