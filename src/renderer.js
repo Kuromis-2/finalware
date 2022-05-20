@@ -31,10 +31,7 @@ async function updateMouseBrowser() {
     let success = false;
 
     try {
-        await window.firmware.updateMouse(
-            pluggedInPorts,
-            firmwareVersion
-        );
+        await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
         success = true;
     } catch (e) {
         // Save error in local storage
