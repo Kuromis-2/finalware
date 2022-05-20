@@ -17,3 +17,5 @@ We provide a .dmg app package.
 ## Known Issues
 ### Not able to access COM-Ports on linux
 The default user permissions on linux prevent our application to access the USB-Ports, to fix this you can change the permissions with the following command. ```sudo adduser $USER dialout```
+### Icon not working when installed per .deb package
+
