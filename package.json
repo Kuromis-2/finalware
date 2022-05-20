@@ -51,8 +51,6 @@
                             "homepage": "https://github.com/Kuromis-2"
                         }
                     }
-<<<<<<< HEAD
-=======
                 },
                 {
                     "name": "@electron-forge/maker-rpm",
@@ -63,7 +61,6 @@
                     "config": {
                         "format": "ULFO"
                     }
->>>>>>> 6a3dd0e8774973df98b299d92ce631713a32aa5c
                 }
             ]
         }

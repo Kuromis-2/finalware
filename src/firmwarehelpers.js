@@ -15,8 +15,6 @@ async function downloadFirmware(firmwareVersion) {
     // Use axios to fetch data from firmwareLookup
     const { data } = await axios.get(firmwareLookup);
 
-    console.log(`data: ${JSON.stringify(data)}`);
-
     const baseLink = data["baseLink"];
     const fileName = data[firmwareVersion]["fileName"];
 
@@ -110,10 +108,18 @@ async function updateMouseHelper(pluggedInPorts, firmwareVersion) {
         console.log(
             `Started update process with firmware version: ${firmwareVersion}`
         );
-        let success = await updateMouse(port, FIRMWARE_PATH);
-        console.log("Finished update process");
-        console.log(success ? "Success" : "Failure");
-        return success;
+        
+        try {
+            await updateMouse(port, FIRMWARE_PATH);
+            console.log("Finished update process");
+            console.log("Success");
+        } catch (e) {
+            console.log("Finished update process");
+            console.log("Failure");
+            throw e;
+        }
+        
+        
     }
 }
 

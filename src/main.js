@@ -18,12 +18,14 @@ function createWindow() {
 
     if (process.platform === "win32") {
         // Windows and Mac had some window size issues
-        windowWidth += 15;
-        windowHeight += 33;
+        windowWidth += 5;
+        windowHeight += 23;
     } else if (process.platform === "darwin") {
         windowWidth -= 1;
         windowHeight += 22;
     }
+
+    const debug = false;
 
     // Create the browser window.
     const mainWindow = new BrowserWindow({
@@ -36,6 +38,8 @@ function createWindow() {
         enableRemoteModule: true,
         nodeIntegration: true,
         autoHideMenuBar: true,
+        resizable: debug,
+        maximizable: debug,
         icon: `${__dirname}/../app/finalmouse-logo.ico`,
     });
 
@@ -43,11 +47,6 @@ function createWindow() {
     console.log("Loading index.html");
     mainWindow.loadFile("app/index.html");
     console.log("index.html loaded");
-
-    if (app.isPackaged) {
-        mainWindow.resizable = false;
-        mainWindow.maximizable = false;
-    }
 
     if (!app.isPackaged) {
         mainWindow.setAlwaysOnTop(true, "screen");
