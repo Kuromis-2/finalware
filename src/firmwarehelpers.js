@@ -3,9 +3,28 @@ const SerialPort = require("serialport");
 const https = require("https");
 const fs = require("fs");
 const axios = require("axios");
-const { resolve } = require("path");
+const path = require("path");
 
-const FIRMWARE_PATH = "firmware.zip";
+function getAppDataPath() {
+    switch (process.platform) {
+      case "darwin": {
+        return path.join(process.env.HOME, "Library", "Application Support", "Finalware");
+      }
+      case "win32": {
+        return path.join(process.env.APPDATA, "Finalware");
+      }
+      case "linux": {
+        return path.join(process.env.HOME, ".Finalware");
+      }
+      default: {
+        console.log("Unsupported platform!");
+        process.exit(1);
+      }
+    }
+}
+
+const APP_DATA_PATH = getAppDataPath();
+const FIRMWARE_PATH = path.join(APP_DATA_PATH, "firmware.zip");
 
 async function downloadFirmware(firmwareVersion) {
     if (!firmwareVersion) throw new Error("firmwareVersion is null");
