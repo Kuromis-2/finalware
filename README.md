@@ -2,6 +2,8 @@
 
 ## Introduction
 A simple walktrough Firmware Updater for your Starlight-12 mouse. Cross-Platform, User Friendly and built on electron.
+## Showcase
+![]()
 
 ## Support 
 We currently support Intel Macs, Windows and Linux.
