@@ -3,7 +3,7 @@
 ## Introduction
 A simple walktrough Firmware Updater for your Starlight-12 mouse. Cross-Platform, User Friendly and built on electron.
 ## Showcase
-![]()
+![Gif](https://raw.githubusercontent.com/Kuromis-2/finalware/main/finalware.gif)
 
 ## Support 
 We currently support Intel Macs, Windows and Linux.
