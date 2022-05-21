@@ -12,7 +12,7 @@ On Windows we got a msi oneclick installer, its the most user friendly experienc
 ### Linux
 We provide a .deb package for debian based system aswell as a zip file with a binary file. Besides that you currently have to change ur user permissions to access COM Ports. We have an explaination of how to do this in the known issues section
 ### MacOS
-We provide a .dmg app package.
+We provide a .zip app package.
 
 ## Known Issues
 ### Not able to access COM-Ports on linux
