@@ -61,7 +61,17 @@
               "homepage": "https://github.com/Kuromis-2"
             }
           }
+      
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "options": {
+              "format": "ULFO"
+            }
+          }
         }
+        
       ]
     }
   }
