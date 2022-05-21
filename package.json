@@ -1,64 +1,68 @@
 {
-    "name": "Finalware",
-    "version": "1.0.0",
-    "description": "tool to flash starlight-12",
-    "main": "src/main.js",
-    "scripts": {
-        "start": "electron-forge start",
-        "win-fix": "del /s /q node_modules && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
-        "linux-fix": "./node_modules/.bin/electron-rebuild",
-        "prettify": "prettier --write .",
-        "import": "npx electron-forge import",
-        "package": "electron-forge package",
-        "make": "electron-forge make"
-    },
-    "author": "kuromis-2<ilovepoggers3@gmail.com>",
-    "license": "ISC",
-    "devDependencies": {
-        "@electron-forge/cli": "^6.0.0-beta.63",
-        "@electron-forge/maker-deb": "^6.0.0-beta.63",
-        "@electron-forge/maker-dmg": "^6.0.0-beta.63",
-        "@electron-forge/maker-rpm": "^6.0.0-beta.63",
-        "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
-        "@electron-forge/maker-zip": "^6.0.0-beta.63",
-        "electron": "^18.2.0",
-        "electron-rebuild": "^3.2.7",
-        "prettier": "^2.6.2",
-        "sass": "^1.51.0"
-    },
-    "dependencies": {
-        "axios": "^0.27.2",
-        "electron-squirrel-startup": "^1.0.0",
-        "node-gyp": "^9.0.0",
-        "pc-nrf-dfu-js": "^0.2.12",
-        "serialport": "^8.0.7"
-    },
-    "config": {
-        "forge": {
-            "packagerConfig": {
-                "icon": "app/finalmouse-logo.ico"
-            },
-            "makers": [
-                {
-                    "name": "@electron-forge/maker-deb",
-                    "config": {
-                        "options": {
-                            "maintainer": "Kuromis-2",
-                            "homepage": "https://github.com/Kuromis-2"
-                        }
-                    }
-                },
-                {
-                    "name": "@electron-forge/maker-rpm",
-                    "config": {}
-                },
-                {
-                    "name": "@electron-forge/maker-dmg",
-                    "config": {
-                        "format": "ULFO"
-                    }
-                }
-            ]
+  "name": "Finalware",
+  "version": "1.0.0",
+  "description": "tool to flash starlight-12",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "win-fix": "del /s /q node_modules && pnpm i && \"./node_modules/.bin/electron-rebuild.cmd\"",
+    "linux-fix": "./node_modules/.bin/electron-rebuild",
+    "prettify": "prettier --write .",
+    "import": "npx electron-forge import",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "kuromis-2<ilovepoggers3@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-wix": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "electron": "^18.2.0",
+    "electron-rebuild": "^3.2.7",
+    "prettier": "^2.6.2",
+    "sass": "^1.51.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "axios": "^0.27.2",
+    "cache": "^2.3.1",
+    "clear": "^0.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "node-gyp": "^9.0.0",
+    "npm": "^8.8.0",
+    "pc-nrf-dfu-js": "^0.2.12",
+    "prettier": "^2.6.2",
+    "sass": "^1.51.0",
+    "serialport": "^8.0.7"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "app/finalmouse-logo.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-wix",
+          "config": {
+            "language": 1033,
+            "manufacturer": "Kuromis-2"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "maintainer": "Kuromis-2",
+              "homepage": "https://github.com/Kuromis-2"
+            }
+          }
         }
+      ]
     }
+  }
 }
