@@ -31,7 +31,7 @@ function getAppDataPath() {
 }
 const APP_DATA = getAppDataPath();
 
-log.transports.file.resolvePath = () => path.join(APP_DATA, `logs/main-${Date.now()}.log`);
+log.transports.file.resolvePath = () => path.join(APP_DATA, `logs/main.log`);
 log.info(`Log file gets saved in Directory ${path.join(APP_DATA, 'logs/')}`);
 log.info("main.js loaded and modules imported");
 
