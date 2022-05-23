@@ -31,6 +31,7 @@
     "axios": "^0.27.2",
     "cache": "^2.3.1",
     "clear": "^0.1.0",
+    "electron-log": "^4.4.7",
     "electron-squirrel-startup": "^1.0.0",
     "node-gyp": "^9.0.0",
     "npm": "^8.8.0",
@@ -60,7 +61,6 @@
               "homepage": "https://github.com/Kuromis-2"
             }
           }
-      
         },
         {
           "name": "@electron-forge/maker-dmg",
@@ -70,7 +70,6 @@
             }
           }
         }
-        
       ]
     }
   }
