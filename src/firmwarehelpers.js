@@ -17,7 +17,7 @@ function getAppDataPath() {
       return path.join(process.env.HOME, ".Finalware");
     }
     default: {
-      console.log("Unsupported platform!");
+      log.info("Unsupported platform, pls contact us.");
       process.exit(1);
     }
   }
