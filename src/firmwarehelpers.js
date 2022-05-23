@@ -74,6 +74,7 @@ async function downloadFirmware(firmwareVersion) {
 }
 
 async function getVersionLookup() {
+  log.info("look up version");
   const versionLookup =
     "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/versionlookup.json";
 
@@ -89,18 +90,19 @@ async function getVersionLookup() {
       });
     });
   });
+  log.info(`got version ${data}`);
 }
 
 async function getComPorts() {
-  console.log("Retrieving all Serial Ports...");
+  log.info("Retrieving all Serial Ports...");
   let ports = [];
   let portList = await SerialPort.list();
   for (const port of portList) {
     ports.push(port);
-    console.log(`Port: ${port.path}`);
+    log.info(`Port: ${port.path}`);
   }
 
-  console.log(`Found ${ports.length} ports!`);
+  log.info(`Found ${ports.length} ports!`);
   return ports;
 }
 
@@ -124,34 +126,38 @@ function getNewlyPluggedInPorts(beforePorts, afterPorts) {
 
 async function updateMouseHelper(pluggedInPorts, firmwareVersion) {
   if (Object.keys(pluggedInPorts).length === 0) {
-    throw "No new com ports plugged in empty object";
+    throw
+    log.info("No new com ports plugged in empty array");
   }
 
   // If there are no plugged in ports, return
   if (pluggedInPorts.length === 0) {
-    throw "No new com ports plugged in empty array";
+    throw
+
+    log.info("No new com ports plugged in empty array");
   }
 
   // If there is more than one plugged in port console error and return
   if (pluggedInPorts.length > 1) {
-    throw "More than one com port plugged in";
+    throw
+    log.info("More than one com port plugged in");
   }
 
   // If there is only one plugged in port, update the mouse
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
     await downloadFirmware(firmwareVersion);
-    console.log(
+    log.info(
       `Started update process with firmware version: ${firmwareVersion}`
     );
 
     try {
       await updateMouse(port, FIRMWARE_PATH);
-      console.log("Finished update process");
-      console.log("Success");
+      log.info("Finished update process");
+      log.info("Success");
     } catch (e) {
-      console.log("Finished update process");
-      console.log("Failure");
+      ;
+      log.error(`Error: ${e}`);
       throw e;
     }
   }
