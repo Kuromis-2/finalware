@@ -31,8 +31,8 @@ function getAppDataPath() {
 }
 const APP_DATA = getAppDataPath();
 
-log.transports.file.resolvePath = () => path.join(APP_DATA, 'logs/main.log');
-log.info(`Log file gets saved to ${path.join(APP_DATA, 'logs/main.log')}`)
+log.transports.file.resolvePath = () => path.join(APP_DATA, `logs/main-${Date.now()}.log`);
+log.info(`Log file gets saved in Directory ${path.join(APP_DATA, 'logs/')}`);
 log.info("main.js loaded and modules imported");
 
 
@@ -42,8 +42,6 @@ log.info(`App is ${!app.isPackaged ? "not" : ""} packaged`);
 
 
 
-
-log.transports.file.resolvePath = () => path.join(APP_DATA, 'logs/main.log');
 
 
 function createWindow() {
@@ -101,6 +99,13 @@ app.whenReady().then(() => {
   ipcMain.handle("exit", (event, title) => {
     app.quit();
   });
+  ipcMain.handle("infolog", (event, message) => {
+    log.info(message);
+  });
+  ipcMain.handle("errorlog", (event ,message) => {
+    log.error(message);
+  });
+
 
   ipcMain.handle("get-versions", async (event) => {
     return await getVersionLookup();

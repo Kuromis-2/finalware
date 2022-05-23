@@ -34,8 +34,8 @@ async function updateMouseBrowser() {
         await window.firmware.updateMouse(pluggedInPorts, firmwareVersion);
         success = true;
     } catch (e) {
-        // Save error in local storage
         localStorage.setItem("error", e);
+   
     }
 
     window.location.href = success ? "success.html" : "failed.html";

@@ -126,21 +126,20 @@ function getNewlyPluggedInPorts(beforePorts, afterPorts) {
 
 async function updateMouseHelper(pluggedInPorts, firmwareVersion) {
   if (Object.keys(pluggedInPorts).length === 0) {
-    throw
-    log.info("No new com ports plugged in empty array");
+    log.error("No new com ports plugged in empty array");
+    throw "No new com ports plugged in empty array"
   }
 
   // If there are no plugged in ports, return
   if (pluggedInPorts.length === 0) {
-    throw
-
-    log.info("No new com ports plugged in empty array");
+    log.error("No new com ports plugged in empty array");
+    throw "No new com ports plugged in empty array";
   }
 
   // If there is more than one plugged in port console error and return
   if (pluggedInPorts.length > 1) {
-    throw
-    log.info("More than one com port plugged in");
+    log.error("More than one com port plugged in");
+    throw "More than one com port plugged in";
   }
 
   // If there is only one plugged in port, update the mouse

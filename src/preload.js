@@ -2,8 +2,12 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
     exit: (title) => ipcRenderer.invoke("exit"),
+    
 });
-
+contextBridge.exposeInMainWorld("log", {
+    info: (message) => ipcRenderer.invoke("infolog"),
+    error: (message) => ipcRenderer.invoke("errorlog"),
+});
 contextBridge.exposeInMainWorld("firmware", {
     getVersions: () => ipcRenderer.invoke("get-versions"),
     getPorts: (key) => ipcRenderer.invoke("get-ports", key),
@@ -19,4 +23,5 @@ contextBridge.exposeInMainWorld("firmware", {
             JSON.stringify(pluggedInPorts),
             firmwareVersion
         ),
+    
 });
