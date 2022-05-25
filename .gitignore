@@ -132,3 +132,7 @@ dfu.zip
 **/.vscode
 **/.idea
 **/build
+
+# Firmware that software downloads
+firmware.zip
+package-lock.json

@@ -12,7 +12,10 @@
         <script src="../src/renderer.js"></script>
         <script>
             function next() {
-                window.location.href = "step1.html";
+                window.location.href = "step4.html";
+            }
+            function back() {
+                window.location.href = "step2.html";
             }
         </script>
         <div>
@@ -20,22 +23,18 @@
                 <img src="../app/finalmouse-logo.png" alt="log" />
             </div>
             <div id="content">
-                <div id="bigger">Starlight-12 Firmware Utility</div>
+                <div id="bigger">Success!</div>
                 <div id="smaller">
-                    Disable all background monitoring apps including NZXT CAM,
-                    Corsair iCUE and Razer Cortex to ensure that the firmware
-                    can be flashed uninterrupted.
+                    Your Starlight-12 now runs the latest firmware version.
                 </div>
             </div>
         </div>
+
         <div id="buttons">
             <div>
-                <button class="btn" onclick="closeapp()" href="">Exit</button>
-            </div>
-
-            <div id="rightbuttons">
-                <button class="btn">Back</button>
-                <button class="btn" onclick="next()">Next</button>
+                <button id="exit" class="btn" onclick="closeapp();" href="">
+                    Exit
+                </button>
             </div>
         </div>
     </body>

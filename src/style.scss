@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* Color Theme Swatches in Hex */
-$Martin-Briceno-–-Personal-Portfolio-1-hex: #F2F2F2;
-$Martin-Briceno-–-Personal-Portfolio-2-hex: #73675A;
-$Martin-Briceno-–-Personal-Portfolio-3-hex: #594D43;
+$Martin-Briceno-–-Personal-Portfolio-1-hex: #f2f2f2;
+$Martin-Briceno-–-Personal-Portfolio-2-hex: #73675a;
+$Martin-Briceno-–-Personal-Portfolio-3-hex: #594d43;
 $Martin-Briceno-–-Personal-Portfolio-4-hex: #262626;
-$Martin-Briceno-–-Personal-Portfolio-5-hex: #0D0D0D;
+$Martin-Briceno-–-Personal-Portfolio-5-hex: #0d0d0d;
 
 .lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
-  }
-  .lds-dual-ring:after {
+}
+.lds-dual-ring:after {
     content: " ";
     display: block;
     width: 64px;
@@ -22,79 +22,78 @@ $Martin-Briceno-–-Personal-Portfolio-5-hex: #0D0D0D;
     border: 6px solid #fff;
     border-color: #fff transparent #fff transparent;
     animation: lds-dual-ring 1.6s ease-in-out infinite;
-  }
-  @keyframes lds-dual-ring {
+}
+@keyframes lds-dual-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
-.loadcontainer{
+.loadcontainer {
     margin-right: 20px;
     height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#textlabel{
-    font-family: 'Rubik', sans-serif;
-    color: #F1F1F1;
+#textlabel {
+    font-family: "Rubik", sans-serif;
+    color: #f1f1f1;
 }
-#selector{
+#selector {
     background-color: $Martin-Briceno-–-Personal-Portfolio-4-hex;
-    font-family: 'Rubik', sans-serif;
-    color: #F1F1F1;
+    font-family: "Rubik", sans-serif;
+    color: #f1f1f1;
 }
-.option{
+.option {
     background-color: $Martin-Briceno-–-Personal-Portfolio-4-hex;
-    color: #F1F1F1;
+    color: #f1f1f1;
 }
 
-ul{
+ul {
     padding: 0;
     list-style: none;
 }
-*{
+* {
     user-select: none; /* Standard */
     -webkit-user-drag: none;
 }
 #header {
-
     display: flex;
     justify-content: center;
 }
-#buttons{
+#buttons {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
 }
-.btn{
-    font-family: 'Rubik', sans-serif;
+.btn {
+    font-family: "Rubik", sans-serif;
     background-color: #595859;
     padding-top: 6px;
     padding-bottom: 6px;
     border-radius: 6px;
     border: none;
     font-size: 14px;
-    color: #F1F1F1;
+    color: #f1f1f1;
     max-width: 96px;
     max-height: 32px;
     padding-left: 16px;
     padding-right: 16px;
     text-decoration: none;
 }
-#back{
-    margin-right: 4px
+#back {
+    margin-right: 4px;
 }
-.btn:active{
-    font-family: 'Rubik', sans-serif;
+.btn:active {
+    font-family: "Rubik", sans-serif;
     background-color: #262626;
     border-radius: 6px;
     border: none;
-    color: #F1F1F1;
+    color: #f1f1f1;
     max-width: 96px;
     max-height: 32px;
     text-decoration: none;
@@ -102,39 +101,37 @@ ul{
 #content {
     margin-left: 12px;
 }
-#bigger{
-    font-family: 'Rubik', sans-serif;
+#bigger {
+    font-family: "Rubik", sans-serif;
     font-size: 28px;
     font-weight: 500;
     letter-spacing: 1px;
 }
-#smaller{
-    font-family: 'Rubik', sans-serif;
+#smaller {
+    font-family: "Rubik", sans-serif;
     width: 90%;
     font-size: 16px;
 }
-#buttons{
-    
+#buttons {
     margin-left: 6px;
     margin-right: 4px;
-
+    display: flex;
+    flex-direction: row;
 }
-body{
-    color: #F1F1F1;
+body {
+    color: #f1f1f1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #0D0D0D;
-    height: 450px;
-    width: 450px;
+    background-color: #0d0d0d;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     margin-left: 0px;
     margin-top: 0px;
 }
 
-
-
-img{
+img {
     height: 76px;
     -webkit-filter: invert(1);
     filter: invert(1);

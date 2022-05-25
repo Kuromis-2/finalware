@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalware</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Finalware</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<script type="module" src="../src/firmwarehelpers.js"></script>
-
-<body onload="updateMouseHelper()">
-    
-        <script src="../src/buttons.js"></script>
+    <body>
+        <script src="../src/renderer.js"></script>
+        <script>
+            updateMouseBrowser();
+        </script>
         <div>
-            <div id="header"><img src="../app/finalmouse-logo.png" alt="logo"></div>
-        <div id="content">
-            <div id="bigger">Step 4: Flashing</div>
-            <div id="smaller">Were currently updating your Starlight 12, this can take up to 30 seconds.</div>
-            <div class="loadcontainer"><div class="lds-dual-ring"></div></div>
+            <div id="header">
+                <img src="../app/finalmouse-logo.png" alt="logo" />
+            </div>
+            <div id="content">
+                <div id="bigger">Step 4: Flashing</div>
+                <div id="smaller">
+                    We're currently updating your Starlight 12. This can take up
+                    to 30 seconds.
+                </div>
+                <div class="loadcontainer">
+                    <div class="lds-dual-ring"></div>
+                </div>
+            </div>
         </div>
-        </div>
-        
-        <div id="buttons">
-        </div>
-    
-    <script src="../src/render.js"></script>
-</body>
+
+        <div id="buttons"></div>
+    </body>
 </html>

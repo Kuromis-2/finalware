@@ -1,49 +1,171 @@
-import { getComPorts, getNewlyPluggedInPorts, updateMouse } from './firmwareutil.js';
-
-
-
-
-
-// Function that takes in a key and saves the com ports as json to local storage
-// Called by onload to save the ports before and after plugging in the mouse
-// Saving both lists to beforePorts and afterPorts
-
-function saveComPorts(key){
-  const comPorts = getComPorts();
-  localStorage.setItem(key, JSON.stringify(comPorts));
-  console.log(`Saved ${comPorts} to local storage under key ${key}`);
+const { updateMouse } = require("./firmwareutil.js");
+const SerialPort = require("serialport");
+const https = require("https");
+const fs = require("fs");
+const axios = require("axios");
+const path = require("path");
+const log = require("electron-log");
+function getAppDataPath() {
+  switch (process.platform) {
+    case "darwin": {
+      return path.join(process.env.HOME, "Library", "Application Support", "Finalware");
+    }
+    case "win32": {
+      return path.join(process.env.APPDATA, "Finalware");
+    }
+    case "linux": {
+      return path.join(process.env.HOME, ".Finalware");
+    }
+    default: {
+      log.info("Unsupported platform, pls contact us.");
+      process.exit(1);
+    }
+  }
 }
 
-function updateMouseHelper(){
-  console.log('Updating mouse');
+const APP_DATA_PATH = getAppDataPath();
+const FIRMWARE_PATH = path.join(APP_DATA_PATH, "firmware.zip");
 
-  // Get before and after port list from local storage unjsonify
-  const beforePorts = JSON.parse(localStorage.getItem('beforePorts'));
-  const afterPorts = JSON.parse(localStorage.getItem('afterPorts'));
+async function downloadFirmware(firmwareVersion) {
+  if (!firmwareVersion) throw new Error("firmwareVersion is null");
+  const firmwareLookup =
+    "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/firmwarelookup.json";
 
-  // Get the ports that were plugged in
-  const pluggedInPorts = getNewlyPluggedInPorts(beforePorts, afterPorts);
+  // Use axios to fetch data from firmwareLookup
+  const { data } = await axios.get(firmwareLookup);
 
-  console.log(`Plugged in ports: ${pluggedInPorts}`);
+  const baseLink = data["baseLink"];
+  const fileName = data[firmwareVersion]["fileName"];
+
+  const firmwareLink = `${baseLink}${fileName}`;
+  log.info(`Downloading firmware from ${firmwareLink}`);
+
+  return new Promise((resolve, reject) => {
+    axios({
+      url: firmwareLink,
+      method: "GET",
+      responseType: "stream",
+    }).then((response) => {
+      // Use the stream to write the file to the filesystem
+      response.data.pipe(fs.createWriteStream(FIRMWARE_PATH));
+      response.data.on("end", () => {
+        log.info("Download Completed");
+        resolve();
+      });
+    }).catch(
+      function(error) {
+        if (error.response) {
+          // Request made and server responded
+          log.error(error.response.data);
+          log.error(error.response.status);
+          log.error(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          log.error(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          log.error('Error', error.message);
+        }
+
+      }
+    );
+  });
+
+}
+
+async function getVersionLookup() {
+  log.info("look up version");
+  const versionLookup =
+    "https://raw.githubusercontent.com/Kuromis-2/newest-firmware/main/versionlookup.json";
+
+  // Fetch data from versionLookup with a https request and return JSON
+  return new Promise((resolve, reject) => {
+    https.get(versionLookup, (response) => {
+      let data = "";
+      response.on("data", (chunk) => {
+        data += chunk;
+      });
+      response.on("end", () => {
+        resolve(JSON.parse(data));
+      });
+    });
+  });
+  log.info(`got version ${data}`);
+}
+
+async function getComPorts() {
+  log.info("Retrieving all Serial Ports...");
+  let ports = [];
+  let portList = await SerialPort.list();
+  for (const port of portList) {
+    ports.push(port);
+    log.info(`Port: ${port.path}`);
+  }
+
+  log.info(`Found ${ports.length} ports!`);
+  return ports;
+}
+
+function getNewlyPluggedInPorts(beforePorts, afterPorts) {
+  if (beforePorts == null) throw new Error("beforePorts is null");
+  if (afterPorts == null) throw new Error("afterPorts is null");
+  if (afterPorts.length < beforePorts.length)
+    throw new Error("afterPorts.length < beforePorts.length");
+  if (afterPorts.length === 0) throw new Error("afterPorts.length === 0");
+
+  // Save only newly plugged in ports and use JSON.stringyfy to compare
+  const newPorts = [];
+  for (const port of afterPorts) {
+    if (beforePorts.find((p) => p.path === port.path) == null) {
+      newPorts.push(port);
+    }
+  }
+
+  return newPorts;
+}
+
+async function updateMouseHelper(pluggedInPorts, firmwareVersion) {
+  if (Object.keys(pluggedInPorts).length === 0) {
+    log.error("No new com ports plugged in empty array");
+    throw "No new com ports plugged in empty array"
+  }
 
   // If there are no plugged in ports, return
   if (pluggedInPorts.length === 0) {
-    console.error('No new com ports plugged in');
-    return;
+    log.error("No new com ports plugged in empty array");
+    throw "No new com ports plugged in empty array";
   }
 
   // If there is more than one plugged in port console error and return
   if (pluggedInPorts.length > 1) {
-    console.error('More than one com port plugged in');
-    return;
+    log.error("More than one com port plugged in");
+    throw "More than one com port plugged in";
   }
 
   // If there is only one plugged in port, update the mouse
   if (pluggedInPorts.length === 1) {
     const port = pluggedInPorts[0];
-    const firmwareVersion = localStorage.getItem('firmwareVersion');
-    updateMouse(port, firmwareVersion); 
-  }
+    await downloadFirmware(firmwareVersion);
+    log.info(
+      `Started update process with firmware version: ${firmwareVersion}`
+    );
 
-  console.log('Updated mouse');
+    try {
+      await updateMouse(port, FIRMWARE_PATH);
+      log.info("Finished update process");
+      log.info("Success");
+    } catch (e) {
+      ;
+      log.error(`Error: ${e}`);
+      throw e;
+    }
+  }
 }
+
+// export getComPorts, updateMouseHelper
+module.exports = {
+  getVersionLookup,
+  getComPorts,
+  getNewlyPluggedInPorts,
+  updateMouseHelper,
+};

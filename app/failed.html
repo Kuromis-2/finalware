@@ -11,43 +11,38 @@
     <body>
         <script src="../src/renderer.js"></script>
         <script>
-            savePortsBrowser("beforePorts");
-        </script>
-        <script>
-            function next() {
-                window.location.href = "step3.html";
-            }
             function back() {
-                window.location.href = "step1.html";
+                window.location.href = "index.html";
             }
         </script>
-
         <div>
             <div id="header">
                 <img src="../app/finalmouse-logo.png" alt="log" />
             </div>
             <div id="content">
-                <div id="bigger">Step 2: Enable DFU Mode</div>
-                <div id="smaller">
-                    Turn off your mouse on the bottom and reconnect the mouse to
-                    the USB cable while pressing the DPI and middle mouse button
-                    simultaneously.
-                </div>
-                <ul></ul>
+                <div id="bigger">Failed!</div>
+                <div id="smaller">:(</div>
+                <div id="smaller">:(</div>
+                <script>
+                    // Get the second smaller element and set the content to the error message from localStorage
+                    var smaller = document.getElementById("smaller");
+                    smaller.innerHTML = localStorage.getItem("error");
+                </script>
             </div>
         </div>
 
         <div id="buttons">
             <div>
-                <button id="exit" class="btn" onclick="closeapp();" href="">
+                <button id="exit" class="btn" onclick="closeapp()" href="">
                     Exit
                 </button>
             </div>
-
             <div id="rightbuttons">
-                <button class="btn" onclick="back()">Back</button>
-                <button class="btn" onclick="next()">Next</button>
+                <button id="exit" class="btn" onclick="back()" href="">
+                    Retry
+                </button>
             </div>
         </div>
+        <script></script>
     </body>
 </html>
