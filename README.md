@@ -11,4 +11,4 @@ In order to install this tool, all you need to do is check out our
 [releases page](https://github.com/Kuromis-2/finalware/releases) and
 download the version of the program you need!
 
-## [Build Instructions](https://github.com/Kuromis-2/finalware/edit/main/buildinstructions.md)
+## [Build Instructions](https://github.com/Kuromis-2/finalware/blob/main/buildinstructions.md)
