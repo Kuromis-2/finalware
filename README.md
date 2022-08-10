@@ -24,7 +24,7 @@ npm install --global yarn
 ```
 You'll also need wix to build msi installers. Just download the installer from [here](https://wixtoolset.org/releases/)
 
-To build for windows you'll need Visual Studio. I just recommend the latest Version with the latest SDK.
+To build for windows you'll need Visual Studio and the Windows SDK. I just recommend the latest Version of [Visual Studio](https://visualstudio.microsoft.com/de/?utm_source=developermscom) and the latest [SDK](https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/). 
 ### 2. Node modules\
 Make sure you have node installed, we used v16.15.0 but any modern version should work. 
 Install the node modules by using pnpm.
