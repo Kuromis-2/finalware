@@ -13,6 +13,6 @@ download the version of the program you need!
 
 ## Build Instructions
 Clone the repository.
-```sh
+```bash
 git clone git@github.com:Kuromis-2/finalware
 ```
