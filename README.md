@@ -12,4 +12,7 @@ In order to install this tool, all you need to do is check out our
 download the version of the program you need!
 
 ## Build Instructions
-
+Clone the repository.
+```js
+git clone git@github.com:Kuromis-2/finalware
+```
