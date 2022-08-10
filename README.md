@@ -40,4 +40,6 @@ You may get this Error:
 ```
 error MSB8036: The Windows SDK version 10.0.22621.0 was not found. Install the required version of Windows SDK or change the SDK version in the project
 ```
-To fix it open ``node_modules\@serialport\bindings\build\bindings.vcxproj``
+A possible fix is to open ``node_modules\@serialport\bindings\build\bindings.vcxproj`` and change the WindowsTargetPlatformVersion to the Version of your installed SDK.
+### 4. Adding new Build Targets
+To add new build targets, add ur target to the maker Object in the package.json. You can find the documentation [here](https://www.electronforge.io/config/makers)
