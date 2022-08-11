@@ -1,4 +1,4 @@
-# Kuromi's Finalware
+# Finalware
 
 This project contains a firmware update tool for Starlight-12 mice written in
 JavaScript using Electron for the Frontend and is based on the
