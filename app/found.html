@@ -9,37 +9,34 @@
     </head>
 
     <body>
+        <script src="../src/renderer.js"></script>
         <script>
             function next() {
-                window.location.href = "step2.html";
+                window.location.href = "step3.html";
             }
-            function back() {
-                window.location.href = "index.html";
-            }
+            //create on load function
+            
         </script>
         <div>
             <div id="header">
                 <img src="../app/finalmouse-logo.png" alt="log" />
             </div>
             <div id="content">
-                <div id="bigger">Step 1: Unplug your mouse</div>
+                <div id="bigger">Starlight-12 found</div>
                 <div id="smaller">
-                    Unplug the wireless receiver of the Starlight 12 mouse you
-                    want to update. This ensures that the last plugged in device
-                    is the mouse to update.
+                    We found a compatible Device to flash to. Disable all background monitoring apps including NZXT CAM,
+                    Corsair iCUE and Razer Cortex to ensure that the firmware
+                    can be flashed uninterrupted. 
                 </div>
             </div>
         </div>
-
         <div id="buttons">
             <div>
-                <button id="exit" class="btn" onclick="closeapp()" href="">
-                    Exit
-                </button>
+                <button class="btn" onclick="closeapp()" href="">Exit</button>
             </div>
 
             <div id="rightbuttons">
-                <button class="btn" onclick="back()">Back</button>
+                <button class="btn">Back</button>
                 <button class="btn" onclick="next()">Next</button>
             </div>
         </div>

@@ -9,6 +9,7 @@ const {
   getComPorts,
   getNewlyPluggedInPorts,
   updateMouseHelper,
+  isInDfuMode
 } = require("./firmwarehelpers.js");
 
 
@@ -114,19 +115,11 @@ app.whenReady().then(() => {
   ipcMain.handle("get-ports", async (event) => {
     return await getComPorts();
   });
-
-  ipcMain.handle("get-new-ports", async (event, beforePorts, afterPorts) => {
-    return await getNewlyPluggedInPorts(
-      JSON.parse(beforePorts),
-      JSON.parse(afterPorts)
-    );
-  });
-
   ipcMain.handle(
     "update-mouse",
-    async (event, pluggedInPorts, firmwareVersion) => {
+    async (event, port, firmwareVersion) => {
       return await updateMouseHelper(
-        JSON.parse(pluggedInPorts),
+        port,
         firmwareVersion
       );
     }

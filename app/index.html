@@ -11,20 +11,51 @@
     <body>
         <script src="../src/renderer.js"></script>
         <script>
-            function next() {
-                window.location.href = "step1.html";
+            let port;
+            async function next(){
+                checkCom().then(function(result){
+                    console.log(result);
+                    //for loop that goes trough all the ports and counts the ones that have vendorid 1915
+                    var count = 0;
+                    for(var i = 0; i < result.length; i++){
+                        if(result[i].vendorId == "1915"){
+                            count++;
+                            //port equals the result.path without "COM"
+                            port = result[i].path.substring(3);
+                        }
+                        
+                        console.log()
+                    }
+                    if(count == 1){
+                        window.location.href = "found.html";
+                        localStorage.setItem("port", port);
+                    }
+
+                    else if(count > 1){
+                        document.getElementById("bigger").innerHTML = "Multiple devices found!";
+
+                        document.getElementById("smaller").innerHTML = "There are multiple Nordic Semiconductor secure update devices connected to your computer. Please make sure that only one device is connected to your computer and try again.";
+                    }
+
+                    
+                });
             }
+            function found(){
+                window.location.href = "found.html";
+            }
+            //window.onload call next
+            window.onload = next();
         </script>
         <div>
             <div id="header">
                 <img src="../app/finalmouse-logo.png" alt="log" />
             </div>
             <div id="content">
-                <div id="bigger">Starlight-12 Firmware Utility</div>
+                <div id="bigger">No device found!</div>
                 <div id="smaller">
-                    Disable all background monitoring apps including NZXT CAM,
-                    Corsair iCUE and Razer Cortex to ensure that the firmware
-                    can be flashed uninterrupted.
+                    We couldn't find a compatible Device to flash to. Turn off your mouse with the switch on the bottom and reconnect the mouse to
+                    the USB cable while pressing the DPI and middle mouse button
+                    simultaneously. After that, press the next button.
                 </div>
             </div>
         </div>

@@ -10,17 +10,11 @@ contextBridge.exposeInMainWorld("log", {
 });
 contextBridge.exposeInMainWorld("firmware", {
     getVersions: () => ipcRenderer.invoke("get-versions"),
-    getPorts: (key) => ipcRenderer.invoke("get-ports", key),
-    getNewPorts: (beforePorts, afterPorts) =>
-        ipcRenderer.invoke(
-            "get-new-ports",
-            JSON.stringify(beforePorts),
-            JSON.stringify(afterPorts)
-        ),
-    updateMouse: (pluggedInPorts, firmwareVersion) =>
+    getPorts: () => ipcRenderer.invoke("get-ports"),
+    updateMouse: (port, firmwareVersion) =>
         ipcRenderer.invoke(
             "update-mouse",
-            JSON.stringify(pluggedInPorts),
+            port,
             firmwareVersion
         ),
     

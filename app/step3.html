@@ -26,10 +26,10 @@
                 <img src="../app/finalmouse-logo.png" alt="log" />
             </div>
             <div id="content">
-                <div id="bigger">Step 3: Scan for DFU Devices</div>
-                <div id="smaller">Choose your mouse in the menu.</div>
+                <div id="bigger">Step 3: Choose the version</div>
+                <div id="smaller">Choose the firmware in the menu.</div>
                 <form>
-                    <label id="textlabel">Starlight-12:</label>
+                    <label id="textlabel">Version:</label>
 
                     <select id="firmwareSelector"></select>
                     <script src="../src/firmwareselector.js"></script>
@@ -48,8 +48,10 @@
                                 qfirmwareSelector.appendChild(option);
                             }
 
-                            saveFirmwareVersion(qfirmwareSelector.value);
+                            localStorage.setItem("version", qfirmwareSelector.value);
+                            console.log(localStorage.getItem("version"));
                         });
+                        
                     </script>
                 </form>
             </div>

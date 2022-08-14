@@ -15,19 +15,19 @@
   "author": "kuromis-2<ilovepoggers3@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/cli": "^6.0.0-beta.65",
+    "@electron-forge/maker-deb": "^6.0.0-beta.65",
     "@electron-forge/maker-dmg": "^6.0.0-beta.63",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.65",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-wix": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.65",
     "electron": "^18.2.0",
     "electron-rebuild": "^3.2.7",
     "prettier": "^2.6.2",
     "sass": "^1.51.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.10.2",
     "axios": "^0.27.2",
     "cache": "^2.3.1",
     "clear": "^0.1.0",
@@ -49,12 +49,16 @@
         {
           "name": "@electron-forge/maker-wix",
           "config": {
+            "name": "Finalware",
             "language": 1033,
             "manufacturer": "Kuromis-2"
           }
         },
         {
           "name": "@electron-forge/maker-deb",
+          "platforms": [
+            "darwin"
+          ],
           "config": {
             "options": {
               "maintainer": "Kuromis-2",
@@ -69,6 +73,10 @@
               "format": "ULFO"
             }
           }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
         }
       ]
     }
