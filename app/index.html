@@ -16,25 +16,29 @@
                 checkCom().then(function(result){
                     console.log(result);
                     //for loop that goes trough all the ports and counts the ones that have vendorid 1915
+                    var selectedport;
                     var count = 0;
                     for(var i = 0; i < result.length; i++){
-                        if(result[i].vendorId == "1915"){
+                        if(result[i].vendorId == "1915" && result[i].productId == "521F"){
                             count++;
                             //port equals the result.path without "COM"
-                            port = result[i].path.substring(3);
+                            selectedport = result[i];
                         }
                         
                         console.log()
                     }
                     if(count == 1){
+
                         window.location.href = "found.html";
-                        localStorage.setItem("port", port);
+                        //stringify the port and put it in localstorage
+                        console.log(selectedport);
+                        localStorage.setItem("port", JSON.stringify(selectedport));
                     }
 
                     else if(count > 1){
                         document.getElementById("bigger").innerHTML = "Multiple devices found!";
 
-                        document.getElementById("smaller").innerHTML = "There are multiple Nordic Semiconductor secure update devices connected to your computer. Please make sure that only one device is connected to your computer and try again.";
+                        document.getElementById("smaller").innerHTML = "There are multiple nrf52480 secure update devices connected to your computer. Please make sure that only one device is connected to your computer and try again.";
                     }
 
                     
@@ -44,7 +48,10 @@
                 window.location.href = "found.html";
             }
             //window.onload call next
-            window.onload = next();
+            window.onload = function(){
+                localStorage.clear();
+                next();
+            }
         </script>
         <div>
             <div id="header">
@@ -65,7 +72,6 @@
             </div>
 
             <div id="rightbuttons">
-                <button class="btn">Back</button>
                 <button class="btn" onclick="next()">Next</button>
             </div>
         </div>

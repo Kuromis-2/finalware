@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, session } = require("electron");
 const path = require("path");
 const log = require('electron-log');
 const ipcMain = require("electron").ipcMain;
@@ -49,11 +49,10 @@ function createWindow() {
   // https://github.com/electron/electron/issues/13670
   let windowWidth = 453;
   let windowHeight = 453;
-
   if (process.platform === "win32") {
     // Windows and Mac had some window size issues
-    windowWidth += 5;
-    windowHeight += 23;
+    windowWidth += 15;
+    windowHeight += 30;
   } else if (process.platform === "darwin") {
     windowWidth -= 1;
     windowHeight += 22;

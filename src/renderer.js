@@ -9,6 +9,20 @@ async function lookUpVersions() {
     return await window.firmware.getVersions();
 }
 async function updateMouseInBrowser() {
-    return await window.firmware.updateMouse(localStorage.getItem("port"), localStorage.getItem("version"));
+    console.log(localStorage.getItem("version"), localStorage.getItem("port"));
+    let success = false;
+
+    try {
+        await window.firmware.updateMouse(JSON.parse(localStorage.getItem("port")), localStorage.getItem("firmwareVersion"));
+        success = true;
+    } catch (e) {
+        localStorage.setItem("error", e);
+    }
+    if (success) {
+        window.location.href = "./success.html";
+    }
+    else {
+        window.location.href = "./failed.html";
+    }
 }
 

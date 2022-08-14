@@ -43,7 +43,8 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "app/finalmouse-logo.ico"
+        "icon": "app/finalmouse-logo.ico",
+        "appIconPath": "app/finalmouse-logo.ico"
       },
       "makers": [
         {
@@ -51,7 +52,8 @@
           "config": {
             "name": "Finalware",
             "language": 1033,
-            "manufacturer": "Kuromis-2"
+            "manufacturer": "Kuromis-2",
+            "appIconPath": "app/finalmouse-logo.ico"
           }
         },
         {

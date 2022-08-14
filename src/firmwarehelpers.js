@@ -109,27 +109,24 @@ async function getComPorts() {
 }
 
 async function updateMouseHelper(port, firmwareVersion) {
-
-    console.log(firmwareVersion);
-    await downloadFirmware(firmwareVersion);
-    log.info(
-      `Started update process with firmware version: ${firmwareVersion}`
-    );
-
-    try {
-      await updateMouse(port, FIRMWARE_PATH);
-      log.info("Finished update process");
-      log.info("Success");
-    } catch (e) {
-      log.error(`Error: ${e}`);
-      throw e;
-    }
   
+  console.log(firmwareVersion);
+  await downloadFirmware(firmwareVersion);
+  log.info(`Started update process with firmware version: ${firmwareVersion}`);
+
+  try {
+    await updateMouse(port, FIRMWARE_PATH);
+    log.info("Finished update process");
+    log.info("Success");
+  } catch (e) {
+    log.error(`Error: ${e}`);
+    throw e;
+  }
 }
 
 // export getComPorts, updateMouseHelper
 module.exports = {
   getVersionLookup,
   getComPorts,
-  updateMouseHelper
+  updateMouseHelper,
 };
