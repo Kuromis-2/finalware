@@ -4,6 +4,7 @@ This project contains a firmware update tool for Starlight-12 mice written in
 JavaScript using Electron for the Frontend and is based on the
 [Serial Port](https://serialport.io) library to communicate with the hardware. And the official 
 Nordicsemiconductor library for flashing Firmware, [pc-nrf-dfu-js](https://github.com/NordicSemiconductor/pc-nrf-dfu-js)
+Even tho we use the finalmouse logo in our tool to clarify the usecase, this tool is UNOFFICIAL.
 
 ## Showcase
 ![Gif](https://raw.githubusercontent.com/Kuromis-2/finalware/main/finalware.gif)
