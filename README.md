@@ -1,6 +1,5 @@
 # Finalware
 
-##Finalware
 This project contains a firmware update tool for Starlight-12 mice as alternative to ChrisWins WinForms tool. 
 Its written in Electron and is based on the
 [Serial Port](https://serialport.io) library to communicate with the hardware. And the official 
