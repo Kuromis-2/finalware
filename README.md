@@ -1,7 +1,8 @@
 # Finalware
 
-This project contains a firmware update tool for Starlight-12 mice written in
-JavaScript using Electron for the Frontend and is based on the
+##Finalware
+This project contains a firmware update tool for Starlight-12 mice as alternative to ChrisWins WinForms tool. 
+Its written in Electron and is based on the
 [Serial Port](https://serialport.io) library to communicate with the hardware. And the official 
 Nordicsemiconductor library for flashing Firmware, [pc-nrf-dfu-js](https://github.com/NordicSemiconductor/pc-nrf-dfu-js)
 Even tho we use the finalmouse logo in our tool to clarify the usecase, this tool is UNOFFICIAL.
@@ -30,6 +31,3 @@ We provide a dmg installation.
 ### Not able to access COM-Ports on linux
 The default user permissions on linux prevent our application to access the USB-Ports, to fix this you can change the permissions with the following command. ```sudo adduser $USER dialout```
 ### Icon not working when installed per .deb package
-
-
-
