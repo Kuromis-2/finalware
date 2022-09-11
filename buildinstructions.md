@@ -1,4 +1,4 @@
-## Build Instructions
+## Build Instructions for windows
 ### 1. Clone the repository.
 ```bash
 git clone git@github.com:Kuromis-2/finalware
